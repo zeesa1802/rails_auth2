@@ -16192,3 +16192,782 @@ Processing by FeaturesController#index as HTML
 Completed 200 OK in 92ms (Views: 73.8ms | ActiveRecord: 0.9ms | Allocations: 5528)
 
 
+Started GET "/" for 127.0.0.1 at 2022-03-24 14:08:40 +0500
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.1ms | Allocations: 15)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:19
+  Rendered layout layouts/application.html.erb (Duration: 87.5ms | Allocations: 5756)
+Completed 200 OK in 102ms (Views: 88.8ms | ActiveRecord: 6.7ms | Allocations: 6079)
+
+
+Started GET "/projects" for 127.0.0.1 at 2022-03-24 14:08:44 +0500
+Processing by ProjectsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering projects/index.html.erb within layouts/application
+  [1m[36mProject Load (0.5ms)[0m  [1m[34mSELECT "projects".* FROM "projects"[0m
+  ↳ app/views/projects/index.html.erb:6
+  Rendered projects/_project.html.erb (Duration: 0.1ms | Allocations: 21)
+  Rendered projects/index.html.erb within layouts/application (Duration: 3.3ms | Allocations: 709)
+  Rendered layout layouts/application.html.erb (Duration: 76.2ms | Allocations: 3192)
+Completed 200 OK in 96ms (Views: 77.1ms | ActiveRecord: 0.8ms | Allocations: 4737)
+
+
+Started GET "/projects/2" for 127.0.0.1 at 2022-03-24 14:08:51 +0500
+Processing by ProjectsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProject Load (0.3ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/projects_controller.rb:63:in `set_project'
+  Rendering layout layouts/application.html.erb
+  Rendering projects/show.html.erb within layouts/application
+  Rendered projects/_project.html.erb (Duration: 0.1ms | Allocations: 21)
+  Rendered projects/show.html.erb within layouts/application (Duration: 1.2ms | Allocations: 338)
+  Rendered layout layouts/application.html.erb (Duration: 59.9ms | Allocations: 2800)
+Completed 200 OK in 81ms (Views: 61.1ms | ActiveRecord: 0.6ms | Allocations: 4794)
+
+
+Started GET "/projects/2/features" for 127.0.0.1 at 2022-03-24 14:08:55 +0500
+Processing by FeaturesController#index as HTML
+  Parameters: {"project_id"=>"2"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProject Load (0.3ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/features_controller.rb:57:in `set_project'
+  Rendering layout layouts/application.html.erb
+  Rendering features/index.html.erb within layouts/application
+  [1m[36mFeature Load (0.4ms)[0m  [1m[34mSELECT "features".* FROM "features" WHERE "features"."project_id" = $1[0m  [["project_id", 2]]
+  ↳ app/views/features/index.html.erb:13
+  Rendered features/index.html.erb within layouts/application (Duration: 3.7ms | Allocations: 1028)
+  Rendered layout layouts/application.html.erb (Duration: 76.3ms | Allocations: 3513)
+Completed 200 OK in 97ms (Views: 77.0ms | ActiveRecord: 1.0ms | Allocations: 5539)
+
+
+Started GET "/projects" for 127.0.0.1 at 2022-03-24 14:09:27 +0500
+Processing by ProjectsController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering projects/index.html.erb within layouts/application
+  [1m[36mProject Load (0.3ms)[0m  [1m[34mSELECT "projects".* FROM "projects"[0m
+  ↳ app/views/projects/index.html.erb:6
+  Rendered projects/_project.html.erb (Duration: 0.1ms | Allocations: 21)
+  Rendered projects/index.html.erb within layouts/application (Duration: 2.6ms | Allocations: 709)
+  Rendered layout layouts/application.html.erb (Duration: 76.6ms | Allocations: 3192)
+Completed 200 OK in 96ms (Views: 77.3ms | ActiveRecord: 0.7ms | Allocations: 4737)
+
+
+Started GET "/projects/2" for 127.0.0.1 at 2022-03-24 14:09:52 +0500
+Processing by ProjectsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProject Load (0.4ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/projects_controller.rb:63:in `set_project'
+  Rendering layout layouts/application.html.erb
+  Rendering projects/show.html.erb within layouts/application
+  Rendered projects/_project.html.erb (Duration: 0.1ms | Allocations: 21)
+  Rendered projects/show.html.erb within layouts/application (Duration: 1.4ms | Allocations: 338)
+  Rendered layout layouts/application.html.erb (Duration: 76.2ms | Allocations: 2800)
+Completed 200 OK in 98ms (Views: 77.4ms | ActiveRecord: 0.7ms | Allocations: 4799)
+
+
+Started GET "/" for 127.0.0.1 at 2022-03-24 14:10:04 +0500
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.1ms | Allocations: 15)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:19
+  Rendered layout layouts/application.html.erb (Duration: 75.2ms | Allocations: 3454)
+Completed 200 OK in 91ms (Views: 76.0ms | ActiveRecord: 0.2ms | Allocations: 3778)
+
+
+Started GET "/projects" for 127.0.0.1 at 2022-03-24 14:10:07 +0500
+Processing by ProjectsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering projects/index.html.erb within layouts/application
+  [1m[36mProject Load (0.4ms)[0m  [1m[34mSELECT "projects".* FROM "projects"[0m
+  ↳ app/views/projects/index.html.erb:6
+  Rendered projects/_project.html.erb (Duration: 0.1ms | Allocations: 21)
+  Rendered projects/index.html.erb within layouts/application (Duration: 3.0ms | Allocations: 709)
+  Rendered layout layouts/application.html.erb (Duration: 74.6ms | Allocations: 3192)
+Completed 200 OK in 93ms (Views: 75.2ms | ActiveRecord: 0.6ms | Allocations: 4746)
+
+
+Started GET "/projects/2" for 127.0.0.1 at 2022-03-24 14:10:12 +0500
+Processing by ProjectsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProject Load (0.3ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/projects_controller.rb:63:in `set_project'
+  Rendering layout layouts/application.html.erb
+  Rendering projects/show.html.erb within layouts/application
+  Rendered projects/_project.html.erb (Duration: 0.1ms | Allocations: 21)
+  Rendered projects/show.html.erb within layouts/application (Duration: 1.1ms | Allocations: 338)
+  Rendered layout layouts/application.html.erb (Duration: 65.1ms | Allocations: 2801)
+Completed 200 OK in 85ms (Views: 66.1ms | ActiveRecord: 0.5ms | Allocations: 4794)
+
+
+Started GET "/projects/2/features" for 127.0.0.1 at 2022-03-24 14:10:18 +0500
+Processing by FeaturesController#index as HTML
+  Parameters: {"project_id"=>"2"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProject Load (0.3ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/features_controller.rb:57:in `set_project'
+  Rendering layout layouts/application.html.erb
+  Rendering features/index.html.erb within layouts/application
+  [1m[36mFeature Load (0.3ms)[0m  [1m[34mSELECT "features".* FROM "features" WHERE "features"."project_id" = $1[0m  [["project_id", 2]]
+  ↳ app/views/features/index.html.erb:13
+  Rendered features/index.html.erb within layouts/application (Duration: 4.5ms | Allocations: 1025)
+  Rendered layout layouts/application.html.erb (Duration: 77.1ms | Allocations: 3510)
+Completed 200 OK in 98ms (Views: 77.8ms | ActiveRecord: 0.8ms | Allocations: 5532)
+
+
+Started GET "/projects/2/features/1/edit" for 127.0.0.1 at 2022-03-24 14:10:26 +0500
+Processing by FeaturesController#edit as HTML
+  Parameters: {"project_id"=>"2", "id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProject Load (0.3ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/features_controller.rb:57:in `set_project'
+  [1m[36mFeature Load (0.3ms)[0m  [1m[34mSELECT "features".* FROM "features" WHERE "features"."project_id" = $1 AND "features"."id" = $2 LIMIT $3[0m  [["project_id", 2], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/features_controller.rb:61:in `set_feature'
+  Rendering layout layouts/application.html.erb
+  Rendering features/edit.html.erb within layouts/application
+  Rendered features/_form.html.erb (Duration: 1.8ms | Allocations: 1008)
+  Rendered features/edit.html.erb within layouts/application (Duration: 11.2ms | Allocations: 1325)
+  Rendered layout layouts/application.html.erb (Duration: 85.3ms | Allocations: 3797)
+Completed 200 OK in 113ms (Views: 86.6ms | ActiveRecord: 0.8ms | Allocations: 6600)
+
+
+Started PATCH "/projects/2/features/1" for 127.0.0.1 at 2022-03-24 14:10:29 +0500
+Processing by FeaturesController#update as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "feature"=>{"feature_name"=>"GHQ1", "status"=>"in_progress"}, "commit"=>"Update Feature", "project_id"=>"2", "id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/features_controller.rb:57:in `set_project'
+  [1m[36mFeature Load (0.3ms)[0m  [1m[34mSELECT "features".* FROM "features" WHERE "features"."project_id" = $1 AND "features"."id" = $2 LIMIT $3[0m  [["project_id", 2], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/features_controller.rb:61:in `set_feature'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/features_controller.rb:40:in `update'
+  [1m[36mFeature Update (0.6ms)[0m  [1m[33mUPDATE "features" SET "status" = $1, "updated_at" = $2 WHERE "features"."id" = $3[0m  [["status", 1], ["updated_at", "2022-03-24 09:10:30.015656"], ["id", 1]]
+  ↳ app/controllers/features_controller.rb:40:in `update'
+  [1m[36mTRANSACTION (6.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/features_controller.rb:40:in `update'
+Redirected to http://127.0.0.1:3000/projects/2/features/1
+Completed 302 Found in 35ms (ActiveRecord: 8.2ms | Allocations: 4454)
+
+
+Started GET "/projects/2/features/1" for 127.0.0.1 at 2022-03-24 14:10:30 +0500
+Processing by FeaturesController#show as TURBO_STREAM
+  Parameters: {"project_id"=>"2", "id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProject Load (0.4ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/features_controller.rb:57:in `set_project'
+  [1m[36mFeature Load (0.4ms)[0m  [1m[34mSELECT "features".* FROM "features" WHERE "features"."project_id" = $1 AND "features"."id" = $2 LIMIT $3[0m  [["project_id", 2], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/features_controller.rb:61:in `set_feature'
+  Rendering layout layouts/application.html.erb
+  Rendering features/show.html.erb within layouts/application
+  Rendered features/show.html.erb within layouts/application (Duration: 0.5ms | Allocations: 99)
+  Rendered layout layouts/application.html.erb (Duration: 75.4ms | Allocations: 2593)
+Completed 200 OK in 101ms (Views: 76.9ms | ActiveRecord: 1.0ms | Allocations: 5345)
+
+
+Started GET "/" for 127.0.0.1 at 2022-03-24 14:10:37 +0500
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.1ms | Allocations: 15)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:19
+  Rendered layout layouts/application.html.erb (Duration: 76.4ms | Allocations: 3472)
+Completed 200 OK in 92ms (Views: 77.3ms | ActiveRecord: 0.2ms | Allocations: 3797)
+
+
+Started GET "/projects" for 127.0.0.1 at 2022-03-24 14:10:39 +0500
+Processing by ProjectsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering projects/index.html.erb within layouts/application
+  [1m[36mProject Load (0.3ms)[0m  [1m[34mSELECT "projects".* FROM "projects"[0m
+  ↳ app/views/projects/index.html.erb:6
+  Rendered projects/_project.html.erb (Duration: 0.1ms | Allocations: 21)
+  Rendered projects/index.html.erb within layouts/application (Duration: 2.7ms | Allocations: 709)
+  Rendered layout layouts/application.html.erb (Duration: 75.4ms | Allocations: 3196)
+Completed 200 OK in 95ms (Views: 76.3ms | ActiveRecord: 0.6ms | Allocations: 4728)
+
+
+Started GET "/projects/2" for 127.0.0.1 at 2022-03-24 14:10:42 +0500
+Processing by ProjectsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/projects_controller.rb:63:in `set_project'
+  Rendering layout layouts/application.html.erb
+  Rendering projects/show.html.erb within layouts/application
+  Rendered projects/_project.html.erb (Duration: 0.1ms | Allocations: 21)
+  Rendered projects/show.html.erb within layouts/application (Duration: 1.2ms | Allocations: 338)
+  Rendered layout layouts/application.html.erb (Duration: 75.0ms | Allocations: 2802)
+Completed 200 OK in 94ms (Views: 76.2ms | ActiveRecord: 0.5ms | Allocations: 4799)
+
+
+Started GET "/projects" for 127.0.0.1 at 2022-03-24 14:17:16 +0500
+Processing by ProjectsController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering projects/index.html.erb within layouts/application
+  [1m[36mProject Load (0.5ms)[0m  [1m[34mSELECT "projects".* FROM "projects"[0m
+  ↳ app/views/projects/index.html.erb:6
+  Rendered projects/_project.html.erb (Duration: 0.1ms | Allocations: 21)
+  Rendered projects/index.html.erb within layouts/application (Duration: 3.0ms | Allocations: 709)
+  Rendered layout layouts/application.html.erb (Duration: 77.1ms | Allocations: 3192)
+Completed 200 OK in 109ms (Views: 77.7ms | ActiveRecord: 7.2ms | Allocations: 7024)
+
+
+Started GET "/projects/2" for 127.0.0.1 at 2022-03-24 14:17:18 +0500
+Processing by ProjectsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/projects_controller.rb:63:in `set_project'
+  Rendering layout layouts/application.html.erb
+  Rendering projects/show.html.erb within layouts/application
+  Rendered projects/_project.html.erb (Duration: 0.1ms | Allocations: 21)
+  Rendered projects/show.html.erb within layouts/application (Duration: 1.2ms | Allocations: 338)
+  Rendered layout layouts/application.html.erb (Duration: 69.3ms | Allocations: 2800)
+Completed 200 OK in 92ms (Views: 70.4ms | ActiveRecord: 0.6ms | Allocations: 4808)
+
+
+Started GET "/projects/2" for 127.0.0.1 at 2022-03-24 14:22:29 +0500
+Processing by ProjectsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProject Load (0.3ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/projects_controller.rb:63:in `set_project'
+  Rendering layout layouts/application.html.erb
+  Rendering projects/show.html.erb within layouts/application
+  Rendered projects/_project.html.erb (Duration: 8.0ms | Allocations: 166)
+  Rendered projects/show.html.erb within layouts/application (Duration: 41.2ms | Allocations: 832)
+  Rendered layout layouts/application.html.erb (Duration: 123.1ms | Allocations: 3958)
+Completed 200 OK in 159ms (Views: 132.7ms | ActiveRecord: 0.6ms | Allocations: 6694)
+
+
+Started GET "/projects/2" for 127.0.0.1 at 2022-03-24 14:23:24 +0500
+Processing by ProjectsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProject Load (0.3ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/projects_controller.rb:63:in `set_project'
+  Rendering layout layouts/application.html.erb
+  Rendering projects/show.html.erb within layouts/application
+  Rendered projects/_project.html.erb (Duration: 9.4ms | Allocations: 166)
+  Rendered projects/show.html.erb within layouts/application (Duration: 43.5ms | Allocations: 830)
+  Rendered layout layouts/application.html.erb (Duration: 123.7ms | Allocations: 3957)
+Completed 200 OK in 160ms (Views: 132.9ms | ActiveRecord: 0.6ms | Allocations: 6709)
+
+
+Started GET "/projects/2" for 127.0.0.1 at 2022-03-24 14:24:35 +0500
+Processing by ProjectsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProject Load (0.4ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/projects_controller.rb:63:in `set_project'
+  Rendering layout layouts/application.html.erb
+  Rendering projects/show.html.erb within layouts/application
+  Rendered projects/_project.html.erb (Duration: 8.0ms | Allocations: 166)
+  Rendered projects/show.html.erb within layouts/application (Duration: 45.2ms | Allocations: 869)
+  Rendered layout layouts/application.html.erb (Duration: 128.1ms | Allocations: 3995)
+Completed 200 OK in 166ms (Views: 138.2ms | ActiveRecord: 0.7ms | Allocations: 6736)
+
+
+Started GET "/routes" for 127.0.0.1 at 2022-03-24 14:29:41 +0500
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mCACHE ActiveRecord::SchemaMigration Pluck (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActiveRecord::PendingMigrationError (
+
+Migrations are pending. To resolve this issue, run:
+
+        bin/rails db:migrate RAILS_ENV=development
+
+You have 1 pending migration:
+
+20220324092913_create_bugs.rb
+
+
+):
+  
+activerecord (7.0.2.3) lib/active_record/migration.rb:627:in `check_pending!'
+activerecord (7.0.2.3) lib/active_record/migration.rb:592:in `block (2 levels) in call'
+activesupport (7.0.2.3) lib/active_support/file_update_checker.rb:83:in `execute'
+activesupport (7.0.2.3) lib/active_support/file_update_checker.rb:93:in `execute_if_updated'
+activerecord (7.0.2.3) lib/active_record/migration.rb:599:in `block in call'
+activerecord (7.0.2.3) lib/active_record/migration.rb:589:in `synchronize'
+activerecord (7.0.2.3) lib/active_record/migration.rb:589:in `call'
+actionpack (7.0.2.3) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (7.0.2.3) lib/active_support/callbacks.rb:99:in `run_callbacks'
+actionpack (7.0.2.3) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (7.0.2.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.2.3) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (7.0.2.3) lib/action_dispatch/middleware/debug_exceptions.rb:28:in `call'
+web-console (4.2.0) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.2.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.2.0) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.2.0) lib/web_console/middleware.rb:17:in `call'
+actionpack (7.0.2.3) lib/action_dispatch/middleware/show_exceptions.rb:26:in `call'
+railties (7.0.2.3) lib/rails/rack/logger.rb:36:in `call_app'
+railties (7.0.2.3) lib/rails/rack/logger.rb:25:in `block in call'
+activesupport (7.0.2.3) lib/active_support/tagged_logging.rb:99:in `block in tagged'
+activesupport (7.0.2.3) lib/active_support/tagged_logging.rb:37:in `tagged'
+activesupport (7.0.2.3) lib/active_support/tagged_logging.rb:99:in `tagged'
+railties (7.0.2.3) lib/rails/rack/logger.rb:25:in `call'
+sprockets-rails (3.4.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (7.0.2.3) lib/action_dispatch/middleware/remote_ip.rb:93:in `call'
+actionpack (7.0.2.3) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (7.0.2.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (7.0.2.3) lib/action_dispatch/middleware/server_timing.rb:20:in `call'
+actionpack (7.0.2.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.2.3) lib/action_dispatch/middleware/static.rb:23:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (7.0.2.3) lib/action_dispatch/middleware/host_authorization.rb:137:in `call'
+railties (7.0.2.3) lib/rails/engine.rb:530:in `call'
+puma (5.6.2) lib/puma/configuration.rb:252:in `call'
+puma (5.6.2) lib/puma/request.rb:77:in `block in handle_request'
+puma (5.6.2) lib/puma/thread_pool.rb:340:in `with_force_shutdown'
+puma (5.6.2) lib/puma/request.rb:76:in `handle_request'
+puma (5.6.2) lib/puma/server.rb:441:in `process_client'
+puma (5.6.2) lib/puma/thread_pool.rb:147:in `block in spawn_thread'
+Started GET "/routes" for 127.0.0.1 at 2022-03-24 14:29:49 +0500
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mCACHE ActiveRecord::SchemaMigration Pluck (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActiveRecord::PendingMigrationError (
+
+Migrations are pending. To resolve this issue, run:
+
+        bin/rails db:migrate RAILS_ENV=development
+
+You have 1 pending migration:
+
+20220324092913_create_bugs.rb
+
+
+):
+  
+activerecord (7.0.2.3) lib/active_record/migration.rb:627:in `check_pending!'
+activerecord (7.0.2.3) lib/active_record/migration.rb:592:in `block (2 levels) in call'
+activesupport (7.0.2.3) lib/active_support/file_update_checker.rb:83:in `execute'
+activerecord (7.0.2.3) lib/active_record/migration.rb:597:in `block in call'
+activerecord (7.0.2.3) lib/active_record/migration.rb:589:in `synchronize'
+activerecord (7.0.2.3) lib/active_record/migration.rb:589:in `call'
+actionpack (7.0.2.3) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (7.0.2.3) lib/active_support/callbacks.rb:99:in `run_callbacks'
+actionpack (7.0.2.3) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (7.0.2.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.2.3) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (7.0.2.3) lib/action_dispatch/middleware/debug_exceptions.rb:28:in `call'
+web-console (4.2.0) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.2.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.2.0) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.2.0) lib/web_console/middleware.rb:17:in `call'
+actionpack (7.0.2.3) lib/action_dispatch/middleware/show_exceptions.rb:26:in `call'
+railties (7.0.2.3) lib/rails/rack/logger.rb:36:in `call_app'
+railties (7.0.2.3) lib/rails/rack/logger.rb:25:in `block in call'
+activesupport (7.0.2.3) lib/active_support/tagged_logging.rb:99:in `block in tagged'
+activesupport (7.0.2.3) lib/active_support/tagged_logging.rb:37:in `tagged'
+activesupport (7.0.2.3) lib/active_support/tagged_logging.rb:99:in `tagged'
+railties (7.0.2.3) lib/rails/rack/logger.rb:25:in `call'
+sprockets-rails (3.4.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (7.0.2.3) lib/action_dispatch/middleware/remote_ip.rb:93:in `call'
+actionpack (7.0.2.3) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (7.0.2.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (7.0.2.3) lib/action_dispatch/middleware/server_timing.rb:20:in `call'
+actionpack (7.0.2.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.2.3) lib/action_dispatch/middleware/static.rb:23:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (7.0.2.3) lib/action_dispatch/middleware/host_authorization.rb:137:in `call'
+railties (7.0.2.3) lib/rails/engine.rb:530:in `call'
+puma (5.6.2) lib/puma/configuration.rb:252:in `call'
+puma (5.6.2) lib/puma/request.rb:77:in `block in handle_request'
+puma (5.6.2) lib/puma/thread_pool.rb:340:in `with_force_shutdown'
+puma (5.6.2) lib/puma/request.rb:76:in `handle_request'
+puma (5.6.2) lib/puma/server.rb:441:in `process_client'
+puma (5.6.2) lib/puma/thread_pool.rb:147:in `block in spawn_thread'
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(1435671319892535600)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateBugs (20220324092913)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (14.9ms)[0m  [1m[35mCREATE TABLE "bugs" ("id" bigserial primary key, "bug_name" character varying, "detail" text, "status" integer, "project_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_8a33b02525"
+FOREIGN KEY ("project_id")
+  REFERENCES "projects" ("id")
+)[0m
+  [1m[35m (3.3ms)[0m  [1m[35mCREATE INDEX "index_bugs_on_project_id" ON "bugs" ("project_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20220324092913"]]
+  [1m[36mTRANSACTION (2.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(1435671319892535600)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/routes" for 127.0.0.1 at 2022-03-24 14:30:14 +0500
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActionController::RoutingError (No route matches [GET] "/routes"):
+  
+Started GET "/routes" for 127.0.0.1 at 2022-03-24 14:32:34 +0500
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActionController::RoutingError (No route matches [GET] "/routes"):
+  
+Started GET "/projects/2" for 127.0.0.1 at 2022-03-24 14:32:35 +0500
+Processing by ProjectsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProject Load (0.3ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/projects_controller.rb:63:in `set_project'
+  Rendering layout layouts/application.html.erb
+  Rendering projects/show.html.erb within layouts/application
+  Rendered projects/_project.html.erb (Duration: 6.8ms | Allocations: 188)
+  Rendered projects/show.html.erb within layouts/application (Duration: 23.7ms | Allocations: 1230)
+  Rendered layout layouts/application.html.erb (Duration: 712.5ms | Allocations: 39576)
+Completed 200 OK in 874ms (Views: 721.7ms | ActiveRecord: 7.9ms | Allocations: 63853)
+
+
+Started GET "/routes" for 127.0.0.1 at 2022-03-24 14:33:26 +0500
+  
+ActionController::RoutingError (No route matches [GET] "/routes"):
+  
+Started GET "/projects/2" for 127.0.0.1 at 2022-03-24 14:35:07 +0500
+Processing by ProjectsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/projects_controller.rb:63:in `set_project'
+  Rendering layout layouts/application.html.erb
+  Rendering projects/show.html.erb within layouts/application
+  Rendered projects/_project.html.erb (Duration: 7.1ms | Allocations: 174)
+  Rendered projects/show.html.erb within layouts/application (Duration: 41.4ms | Allocations: 935)
+  Rendered layout layouts/application.html.erb (Duration: 393.4ms | Allocations: 16690)
+Completed 200 OK in 470ms (Views: 403.6ms | ActiveRecord: 6.1ms | Allocations: 29753)
+
+
+Started GET "/projects/2/bugs" for 127.0.0.1 at 2022-03-24 14:35:11 +0500
+Processing by BugsController#index as HTML
+  Parameters: {"project_id"=>"2"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProject Load (0.4ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/bugs_controller.rb:53:in `set_project'
+  Rendering layout layouts/application.html.erb
+  Rendering bugs/index.html.erb within layouts/application
+  [1m[36mBug Load (0.6ms)[0m  [1m[34mSELECT "bugs".* FROM "bugs" WHERE "bugs"."project_id" = $1[0m  [["project_id", 2]]
+  ↳ app/views/bugs/index.html.erb:14
+  Rendered bugs/index.html.erb within layouts/application (Duration: 24.2ms | Allocations: 3072)
+  Rendered layout layouts/application.html.erb (Duration: 97.7ms | Allocations: 5667)
+Completed 200 OK in 182ms (Views: 100.7ms | ActiveRecord: 2.7ms | Allocations: 13333)
+
+
+Started GET "/projects/2/bugs/new" for 127.0.0.1 at 2022-03-24 14:35:20 +0500
+Processing by BugsController#new as HTML
+  Parameters: {"project_id"=>"2"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProject Load (0.4ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/bugs_controller.rb:53:in `set_project'
+  Rendering layout layouts/application.html.erb
+  Rendering bugs/new.html.erb within layouts/application
+  Rendered bugs/_form.html.erb (Duration: 84.3ms | Allocations: 4800)
+  Rendered bugs/new.html.erb within layouts/application (Duration: 97.9ms | Allocations: 5099)
+  Rendered layout layouts/application.html.erb (Duration: 166.8ms | Allocations: 7571)
+Completed 200 OK in 211ms (Views: 168.0ms | ActiveRecord: 2.2ms | Allocations: 14325)
+
+
+Started GET "/projects/2/bugs/new" for 127.0.0.1 at 2022-03-24 14:36:04 +0500
+Processing by BugsController#new as HTML
+  Parameters: {"project_id"=>"2"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProject Load (0.3ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/bugs_controller.rb:53:in `set_project'
+  Rendering layout layouts/application.html.erb
+  Rendering bugs/new.html.erb within layouts/application
+  Rendered bugs/_form.html.erb (Duration: 31.2ms | Allocations: 4491)
+  Rendered bugs/new.html.erb within layouts/application (Duration: 43.6ms | Allocations: 4771)
+  Rendered layout layouts/application.html.erb (Duration: 44.4ms | Allocations: 4851)
+Completed 500 Internal Server Error in 80ms (ActiveRecord: 0.6ms | Allocations: 7744)
+
+
+  
+ActionView::Template::Error (undefined method `bug_name' for #<Project id: 2, name: "Arsanic2050", created_at: "2022-03-24 06:01:21.790405000 +0000", updated_at: "2022-03-24 06:01:21.790405000 +0000">):
+    25:   </div>
+    26:   <div class="field">
+    27:     <%= f.label :project %><br />
+    28:     <%= f.text_field :project, value:@project.bug_name %>
+    29:   </div>
+    30:   <div class="actions">
+    31:     <%= f.submit %>
+  
+app/views/bugs/_form.html.erb:28
+app/views/bugs/_form.html.erb:1
+app/views/bugs/new.html.erb:3
+Started GET "/projects/2/bugs/new" for 127.0.0.1 at 2022-03-24 14:36:48 +0500
+Processing by BugsController#new as HTML
+  Parameters: {"project_id"=>"2"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProject Load (0.5ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/bugs_controller.rb:53:in `set_project'
+  Rendering layout layouts/application.html.erb
+  Rendering bugs/new.html.erb within layouts/application
+  Rendered bugs/_form.html.erb (Duration: 26.2ms | Allocations: 1546)
+  Rendered bugs/new.html.erb within layouts/application (Duration: 38.2ms | Allocations: 1856)
+  Rendered layout layouts/application.html.erb (Duration: 120.8ms | Allocations: 5009)
+Completed 200 OK in 159ms (Views: 132.7ms | ActiveRecord: 0.8ms | Allocations: 7920)
+
+
+Started GET "/projects/2/bugs/new" for 127.0.0.1 at 2022-03-24 14:37:07 +0500
+Processing by BugsController#new as HTML
+  Parameters: {"project_id"=>"2"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProject Load (0.3ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/bugs_controller.rb:53:in `set_project'
+  Rendering layout layouts/application.html.erb
+  Rendering bugs/new.html.erb within layouts/application
+  Rendered bugs/_form.html.erb (Duration: 26.5ms | Allocations: 1548)
+  Rendered bugs/new.html.erb within layouts/application (Duration: 40.1ms | Allocations: 1855)
+  Rendered layout layouts/application.html.erb (Duration: 125.0ms | Allocations: 4994)
+Completed 200 OK in 158ms (Views: 134.0ms | ActiveRecord: 0.6ms | Allocations: 7888)
+
+
+Started GET "/projects/2/bugs/new" for 127.0.0.1 at 2022-03-24 14:38:04 +0500
+Processing by BugsController#new as HTML
+  Parameters: {"project_id"=>"2"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProject Load (0.3ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/bugs_controller.rb:53:in `set_project'
+  Rendering layout layouts/application.html.erb
+  Rendering bugs/new.html.erb within layouts/application
+  Rendered bugs/_form.html.erb (Duration: 32.5ms | Allocations: 1867)
+  Rendered bugs/new.html.erb within layouts/application (Duration: 47.0ms | Allocations: 2174)
+  Rendered layout layouts/application.html.erb (Duration: 398.8ms | Allocations: 18000)
+Completed 200 OK in 514ms (Views: 408.4ms | ActiveRecord: 9.0ms | Allocations: 36675)
+
+
+Started POST "/projects/2/bugs" for 127.0.0.1 at 2022-03-24 14:39:26 +0500
+Processing by BugsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "bug"=>{"bug_name"=>"ProductPage", "detail"=>"incorrect prices displaying for products.", "status"=>"started"}, "commit"=>"Create Bug", "project_id"=>"2"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProject Load (0.3ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/bugs_controller.rb:53:in `set_project'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/bugs_controller.rb:27:in `create'
+  [1m[36mBug Create (1.2ms)[0m  [1m[32mINSERT INTO "bugs" ("bug_name", "detail", "status", "project_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["bug_name", "ProductPage"], ["detail", "incorrect prices displaying for products."], ["status", 0], ["project_id", 2], ["created_at", "2022-03-24 09:39:27.091105"], ["updated_at", "2022-03-24 09:39:27.091105"]]
+  ↳ app/controllers/bugs_controller.rb:27:in `create'
+  [1m[36mTRANSACTION (5.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/bugs_controller.rb:27:in `create'
+Redirected to http://127.0.0.1:3000/projects/2/bugs/1
+Completed 302 Found in 95ms (ActiveRecord: 15.5ms | Allocations: 20583)
+
+
+Started GET "/projects/2/bugs/1" for 127.0.0.1 at 2022-03-24 14:39:27 +0500
+Processing by BugsController#show as TURBO_STREAM
+  Parameters: {"project_id"=>"2", "id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/bugs_controller.rb:53:in `set_project'
+  [1m[36mBug Load (0.4ms)[0m  [1m[34mSELECT "bugs".* FROM "bugs" WHERE "bugs"."project_id" = $1 AND "bugs"."id" = $2 LIMIT $3[0m  [["project_id", 2], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/bugs_controller.rb:57:in `set_bug'
+  Rendering layout layouts/application.html.erb
+  Rendering bugs/show.html.erb within layouts/application
+  Rendered bugs/show.html.erb within layouts/application (Duration: 6.8ms | Allocations: 407)
+  Rendered layout layouts/application.html.erb (Duration: 380.6ms | Allocations: 15696)
+Completed 200 OK in 411ms (Views: 382.7ms | ActiveRecord: 1.0ms | Allocations: 19100)
+
+
+Started GET "/projects/2/bugs/1" for 127.0.0.1 at 2022-03-24 14:39:58 +0500
+Processing by BugsController#show as HTML
+  Parameters: {"project_id"=>"2", "id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProject Load (0.3ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/bugs_controller.rb:53:in `set_project'
+  [1m[36mBug Load (0.5ms)[0m  [1m[34mSELECT "bugs".* FROM "bugs" WHERE "bugs"."project_id" = $1 AND "bugs"."id" = $2 LIMIT $3[0m  [["project_id", 2], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/bugs_controller.rb:57:in `set_bug'
+  Rendering layout layouts/application.html.erb
+  Rendering bugs/show.html.erb within layouts/application
+  Rendered bugs/show.html.erb within layouts/application (Duration: 18.4ms | Allocations: 381)
+  Rendered layout layouts/application.html.erb (Duration: 97.6ms | Allocations: 3528)
+Completed 200 OK in 135ms (Views: 107.5ms | ActiveRecord: 1.0ms | Allocations: 6987)
+
+
+Started GET "/projects/2/bugs/1/edit" for 127.0.0.1 at 2022-03-24 14:40:18 +0500
+Processing by BugsController#edit as HTML
+  Parameters: {"project_id"=>"2", "id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/bugs_controller.rb:53:in `set_project'
+  [1m[36mBug Load (0.3ms)[0m  [1m[34mSELECT "bugs".* FROM "bugs" WHERE "bugs"."project_id" = $1 AND "bugs"."id" = $2 LIMIT $3[0m  [["project_id", 2], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/bugs_controller.rb:57:in `set_bug'
+  Rendering layout layouts/application.html.erb
+  Rendering bugs/edit.html.erb within layouts/application
+  Rendered bugs/_form.html.erb (Duration: 10.6ms | Allocations: 1687)
+  Rendered bugs/edit.html.erb within layouts/application (Duration: 24.6ms | Allocations: 2066)
+  Rendered layout layouts/application.html.erb (Duration: 98.4ms | Allocations: 4538)
+Completed 200 OK in 130ms (Views: 99.7ms | ActiveRecord: 0.8ms | Allocations: 7335)
+
+
+Started PATCH "/projects/2/bugs/1" for 127.0.0.1 at 2022-03-24 14:40:23 +0500
+Processing by BugsController#update as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "bug"=>{"bug_name"=>"ProductPage", "detail"=>"incorrect prices displaying for products.", "status"=>"in_progress"}, "commit"=>"Update Bug", "project_id"=>"2", "id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProject Load (0.3ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/bugs_controller.rb:53:in `set_project'
+  [1m[36mBug Load (0.4ms)[0m  [1m[34mSELECT "bugs".* FROM "bugs" WHERE "bugs"."project_id" = $1 AND "bugs"."id" = $2 LIMIT $3[0m  [["project_id", 2], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/bugs_controller.rb:57:in `set_bug'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/bugs_controller.rb:36:in `update'
+  [1m[36mBug Update (0.5ms)[0m  [1m[33mUPDATE "bugs" SET "status" = $1, "updated_at" = $2 WHERE "bugs"."id" = $3[0m  [["status", 1], ["updated_at", "2022-03-24 09:40:23.162016"], ["id", 1]]
+  ↳ app/controllers/bugs_controller.rb:36:in `update'
+  [1m[36mTRANSACTION (6.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/bugs_controller.rb:36:in `update'
+Redirected to http://127.0.0.1:3000/projects/2/bugs/1
+Completed 302 Found in 38ms (ActiveRecord: 8.3ms | Allocations: 4593)
+
+
+Started GET "/projects/2/bugs/1" for 127.0.0.1 at 2022-03-24 14:40:23 +0500
+Processing by BugsController#show as TURBO_STREAM
+  Parameters: {"project_id"=>"2", "id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/bugs_controller.rb:53:in `set_project'
+  [1m[36mBug Load (0.3ms)[0m  [1m[34mSELECT "bugs".* FROM "bugs" WHERE "bugs"."project_id" = $1 AND "bugs"."id" = $2 LIMIT $3[0m  [["project_id", 2], ["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/bugs_controller.rb:57:in `set_bug'
+  Rendering layout layouts/application.html.erb
+  Rendering bugs/show.html.erb within layouts/application
+  Rendered bugs/show.html.erb within layouts/application (Duration: 0.4ms | Allocations: 101)
+  Rendered layout layouts/application.html.erb (Duration: 71.9ms | Allocations: 2583)
+Completed 200 OK in 96ms (Views: 73.0ms | ActiveRecord: 0.8ms | Allocations: 5383)
+
+
+Started GET "/projects/2/bugs" for 127.0.0.1 at 2022-03-24 14:40:25 +0500
+Processing by BugsController#index as HTML
+  Parameters: {"project_id"=>"2"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/bugs_controller.rb:53:in `set_project'
+  Rendering layout layouts/application.html.erb
+  Rendering bugs/index.html.erb within layouts/application
+  [1m[36mBug Load (0.3ms)[0m  [1m[34mSELECT "bugs".* FROM "bugs" WHERE "bugs"."project_id" = $1[0m  [["project_id", 2]]
+  ↳ app/views/bugs/index.html.erb:14
+  Rendered bugs/index.html.erb within layouts/application (Duration: 11.2ms | Allocations: 1972)
+  Rendered layout layouts/application.html.erb (Duration: 83.0ms | Allocations: 4457)
+Completed 200 OK in 110ms (Views: 83.9ms | ActiveRecord: 0.8ms | Allocations: 6529)
+
+
+Started GET "/projects/2/bugs" for 127.0.0.1 at 2022-03-24 14:40:46 +0500
+Processing by BugsController#index as HTML
+  Parameters: {"project_id"=>"2"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProject Load (0.4ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/bugs_controller.rb:53:in `set_project'
+  Rendering layout layouts/application.html.erb
+  Rendering bugs/index.html.erb within layouts/application
+  [1m[36mBug Load (0.5ms)[0m  [1m[34mSELECT "bugs".* FROM "bugs" WHERE "bugs"."project_id" = $1[0m  [["project_id", 2]]
+  ↳ app/views/bugs/index.html.erb:14
+  Rendered bugs/index.html.erb within layouts/application (Duration: 26.7ms | Allocations: 1195)
+  Rendered layout layouts/application.html.erb (Duration: 106.5ms | Allocations: 4362)
+Completed 200 OK in 151ms (Views: 123.6ms | ActiveRecord: 1.1ms | Allocations: 7112)
+
+
+Started GET "/projects/2/bugs/new" for 127.0.0.1 at 2022-03-24 14:40:50 +0500
+Processing by BugsController#new as HTML
+  Parameters: {"project_id"=>"2"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProject Load (0.3ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/bugs_controller.rb:53:in `set_project'
+  Rendering layout layouts/application.html.erb
+  Rendering bugs/new.html.erb within layouts/application
+  Rendered bugs/_form.html.erb (Duration: 10.3ms | Allocations: 1607)
+  Rendered bugs/new.html.erb within layouts/application (Duration: 23.3ms | Allocations: 1903)
+  Rendered layout layouts/application.html.erb (Duration: 94.9ms | Allocations: 4375)
+Completed 200 OK in 120ms (Views: 96.0ms | ActiveRecord: 0.6ms | Allocations: 6620)
+
+
+Started POST "/projects/2/bugs" for 127.0.0.1 at 2022-03-24 14:41:41 +0500
+Processing by BugsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "bug"=>{"bug_name"=>"Date Format", "detail"=>"Expiry dates are not in correct format. Please correct the format as followint\nYY:mm:dd", "status"=>"started"}, "commit"=>"Create Bug", "project_id"=>"2"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProject Load (0.4ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/bugs_controller.rb:53:in `set_project'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/bugs_controller.rb:27:in `create'
+  [1m[36mBug Create (0.5ms)[0m  [1m[32mINSERT INTO "bugs" ("bug_name", "detail", "status", "project_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["bug_name", "Date Format"], ["detail", "Expiry dates are not in correct format. Please correct the format as followint\nYY:mm:dd"], ["status", 0], ["project_id", 2], ["created_at", "2022-03-24 09:41:42.006808"], ["updated_at", "2022-03-24 09:41:42.006808"]]
+  ↳ app/controllers/bugs_controller.rb:27:in `create'
+  [1m[36mTRANSACTION (6.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/bugs_controller.rb:27:in `create'
+Redirected to http://127.0.0.1:3000/projects/2/bugs/2
+Completed 302 Found in 33ms (ActiveRecord: 7.7ms | Allocations: 3917)
+
+
+Started GET "/projects/2/bugs/2" for 127.0.0.1 at 2022-03-24 14:41:42 +0500
+Processing by BugsController#show as TURBO_STREAM
+  Parameters: {"project_id"=>"2", "id"=>"2"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/bugs_controller.rb:53:in `set_project'
+  [1m[36mBug Load (0.4ms)[0m  [1m[34mSELECT "bugs".* FROM "bugs" WHERE "bugs"."project_id" = $1 AND "bugs"."id" = $2 LIMIT $3[0m  [["project_id", 2], ["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/bugs_controller.rb:57:in `set_bug'
+  Rendering layout layouts/application.html.erb
+  Rendering bugs/show.html.erb within layouts/application
+  Rendered bugs/show.html.erb within layouts/application (Duration: 8.5ms | Allocations: 356)
+  Rendered layout layouts/application.html.erb (Duration: 77.7ms | Allocations: 2839)
+Completed 200 OK in 107ms (Views: 79.0ms | ActiveRecord: 0.9ms | Allocations: 5692)
+
+
+Started GET "/projects/2/bugs/2/edit" for 127.0.0.1 at 2022-03-24 14:41:57 +0500
+Processing by BugsController#edit as HTML
+  Parameters: {"project_id"=>"2", "id"=>"2"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/bugs_controller.rb:53:in `set_project'
+  [1m[36mBug Load (0.4ms)[0m  [1m[34mSELECT "bugs".* FROM "bugs" WHERE "bugs"."project_id" = $1 AND "bugs"."id" = $2 LIMIT $3[0m  [["project_id", 2], ["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/bugs_controller.rb:57:in `set_bug'
+  Rendering layout layouts/application.html.erb
+  Rendering bugs/edit.html.erb within layouts/application
+  Rendered bugs/_form.html.erb (Duration: 2.1ms | Allocations: 1194)
+  Rendered bugs/edit.html.erb within layouts/application (Duration: 11.3ms | Allocations: 1509)
+  Rendered layout layouts/application.html.erb (Duration: 85.1ms | Allocations: 3981)
+Completed 200 OK in 115ms (Views: 86.4ms | ActiveRecord: 0.8ms | Allocations: 6811)
+
+
+Started PATCH "/projects/2/bugs/2" for 127.0.0.1 at 2022-03-24 14:42:10 +0500
+Processing by BugsController#update as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "bug"=>{"bug_name"=>"Date Format", "detail"=>"Expiry dates are not in correct format. Please correct the format as following\nYY:mm:dd", "status"=>"started"}, "commit"=>"Update Bug", "project_id"=>"2", "id"=>"2"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProject Load (0.5ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/bugs_controller.rb:53:in `set_project'
+  [1m[36mBug Load (0.3ms)[0m  [1m[34mSELECT "bugs".* FROM "bugs" WHERE "bugs"."project_id" = $1 AND "bugs"."id" = $2 LIMIT $3[0m  [["project_id", 2], ["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/bugs_controller.rb:57:in `set_bug'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/bugs_controller.rb:36:in `update'
+  [1m[36mBug Update (0.5ms)[0m  [1m[33mUPDATE "bugs" SET "detail" = $1, "updated_at" = $2 WHERE "bugs"."id" = $3[0m  [["detail", "Expiry dates are not in correct format. Please correct the format as following\nYY:mm:dd"], ["updated_at", "2022-03-24 09:42:11.042020"], ["id", 2]]
+  ↳ app/controllers/bugs_controller.rb:36:in `update'
+  [1m[36mTRANSACTION (1.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/bugs_controller.rb:36:in `update'
+Redirected to http://127.0.0.1:3000/projects/2/bugs/2
+Completed 302 Found in 34ms (ActiveRecord: 3.6ms | Allocations: 4463)
+
+
+Started GET "/projects/2/bugs/2" for 127.0.0.1 at 2022-03-24 14:42:11 +0500
+Processing by BugsController#show as TURBO_STREAM
+  Parameters: {"project_id"=>"2", "id"=>"2"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/bugs_controller.rb:53:in `set_project'
+  [1m[36mBug Load (0.2ms)[0m  [1m[34mSELECT "bugs".* FROM "bugs" WHERE "bugs"."project_id" = $1 AND "bugs"."id" = $2 LIMIT $3[0m  [["project_id", 2], ["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/bugs_controller.rb:57:in `set_bug'
+  Rendering layout layouts/application.html.erb
+  Rendering bugs/show.html.erb within layouts/application
+  Rendered bugs/show.html.erb within layouts/application (Duration: 0.5ms | Allocations: 101)
+  Rendered layout layouts/application.html.erb (Duration: 74.2ms | Allocations: 2590)
+Completed 200 OK in 100ms (Views: 75.9ms | ActiveRecord: 0.7ms | Allocations: 5352)
+
+

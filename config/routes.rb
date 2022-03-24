@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   resources :projects do
     resources :features
+    resources :bugs
   end
 
 # devise_scope :user do  

@@ -3,8 +3,11 @@
 <h2><%= render @project %></h2>
 
 <div>
+
   <%= link_to "Edit this project", edit_project_path(@project) %> |
   <%= link_to "Show Features", project_features_path(@project) %>
+  <%= link_to "Show Bugs", project_bugs_path(@project) %>
+
   <%= link_to "Back to projects", projects_path %>
 
   <%= button_to "Destroy this project", @project, method: :delete %>
