@@ -41,9 +41,9 @@
 	<div style="background-color: orange"><%= content_tag(:div, message) %></div>
 <% end %>
   <% if user_signed_in? %>
-    <p>Signed in as <strong><%= current_user.email %> </strong> 
+    <p>Signed in as <strong><%= current_user.email %></strong> 
     <p>Role is admin or not <strong><%= current_user.admin? %></strong> </p>
-    <p><%= current_user.role %></strong> </p>
+    <p><strong>Current_User_Role: </strong><%= current_user.role %> </p>
   
   <% end %>
 

@@ -13,6 +13,7 @@ class ProjectsController < ApplicationController
   # GET /projects/new
   def new
     @project = Project.new
+    @users = User.all
   end
 
   # GET /projects/1/edit
@@ -22,9 +23,32 @@ class ProjectsController < ApplicationController
   # POST /projects or /projects.json
   def create
     @project = Project.new(project_params)
+    puts("start")
+
+    # users = params[:users]
+
+    # users.each do |user|
+    #   add_user = User.find_by id: user
+    #   puts(add_user.email)
+    # end
+
+    # add_user = User.find_by id: users[2]
+    # puts(add_user.email)
+    
 
     respond_to do |format|
       if @project.save
+        saved_project = Project.find_by id: @project.id
+        users = params[:users]
+
+        users.each do |user|
+          add_user = User.find_by id: user
+          saved_project.users.push(add_user)
+          # puts(add_user.email)
+        end
+        
+        
+        puts(saved_project.name)
         format.html { redirect_to project_url(@project), notice: "Project was successfully created." }
         format.json { render :show, status: :created, location: @project }
       else
