@@ -1,0 +1,27 @@
+<h1>Listing features</h1>
+
+<table>
+  <tr>
+    <th>Feature name</th>
+    <th>Status</th>
+    <th>Project</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @features.each do |feature| %>
+  <tr>
+    <td><%= feature.feature_name %></td>
+    <td><%= feature.status %></td>
+    <td><%= @project.name %></td>
+    <td><%= link_to 'Show', [feature.project, feature] %></td>
+    <td><%= link_to 'Edit', edit_project_feature_path(feature.project, feature) %></td>
+    <td><%= link_to 'Destroy', [feature.project, feature], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Feature', new_project_feature_path(params[:project_id]) %>

@@ -1,0 +1,12 @@
+<h1>Users Information</h1>
+
+<% @users.each do |user| %>
+  email: <%= user.email %>
+  sign in count: <%=user.sign_in_count%>
+  <b>current user can edit or not </b>
+
+  <%=user.role %>
+  
+  <%= link_to "Edit Role", edit_user_path(user) if policy(User).edit?	%>
+  <br>
+<% end %>
