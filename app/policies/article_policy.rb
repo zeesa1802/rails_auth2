@@ -7,7 +7,7 @@ class ArticlePolicy < ApplicationPolicy
   end
 
   def index?
-    @user.has_role? :admin
+    @user.role == "admin" or @user.role == "project_manager"
   end
 
 end

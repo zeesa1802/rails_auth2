@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_03_24_111846) do
+ActiveRecord::Schema[7.0].define(version: 2022_03_25_105645) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -67,13 +67,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_24_111846) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "projects_users", id: false, force: :cascade do |t|
-    t.bigint "project_id"
-    t.bigint "user_id"
-    t.index ["project_id"], name: "index_projects_users_on_project_id"
-    t.index ["user_id"], name: "index_projects_users_on_user_id"
-  end
-
   create_table "roles", force: :cascade do |t|
     t.string "name"
     t.string "resource_type"
@@ -82,6 +75,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_24_111846) do
     t.datetime "updated_at", null: false
     t.index ["name", "resource_type", "resource_id"], name: "index_roles_on_name_and_resource_type_and_resource_id"
     t.index ["resource_type", "resource_id"], name: "index_roles_on_resource"
+  end
+
+  create_table "user_projects", force: :cascade do |t|
+    t.bigint "project_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["project_id"], name: "index_user_projects_on_project_id"
+    t.index ["user_id"], name: "index_user_projects_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -112,4 +114,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_24_111846) do
 
   add_foreign_key "bugs", "projects"
   add_foreign_key "features", "projects"
+  add_foreign_key "user_projects", "projects"
+  add_foreign_key "user_projects", "users"
 end

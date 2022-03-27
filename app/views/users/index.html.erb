@@ -6,7 +6,9 @@
   <b>current user can edit or not </b>
 
   <%=user.role %>
-  
+   <%= link_to "Show This User", user_path(user) %>
+
+
   <%= link_to "Edit Role", edit_user_path(user) if policy(User).edit?	%>
   <br>
 <% end %>

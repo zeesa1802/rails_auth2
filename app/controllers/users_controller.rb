@@ -9,9 +9,26 @@ class UsersController < ApplicationController
     # end
   end
 
+  def show
+    @user = User.find(params[:id])
+  end
+
   def edit
     @user = User.find(params[:id])
     authorize @user
+  end
+
+
+  def destroy
+    puts("deleteteeee")
+    user = User.find(params[:id])
+    # puts(user.email)
+    user.destroy
+
+    respond_to do |format|
+      format.html { redirect_to users_url, notice: "User was successfully destroyed." }
+      format.json { head :no_content }
+    end
   end
 
   def update
