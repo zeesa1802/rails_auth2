@@ -1,3 +1,4 @@
+
 <%= form_for([@bug.project, @bug]) do |f| %>
   <% if @bug.errors.any? %>
     <div id="error_explanation">
@@ -23,6 +24,13 @@
     <%= f.label :status %><br />
     <%= f.select :status, ["started", "in_progress", "in_review", "fixed"] %>
   </div>
+
+    <div class="field">
+    <%= f.label :assigned_to %><br />
+    <%= collection_select(:bug, :user_id, User.all, :id, :email, {}, { :multiple => false}) %>
+  </div>
+
+
   <div class="field">
     <%= f.label :project %><br />
     <%= f.text_field :project, value:@project.name, :disabled=>true %>

@@ -13,6 +13,7 @@ class BugsController < ApplicationController
 
   # GET projects/1/bugs/new
   def new
+    @users = User.all
     @bug = @project.bugs.build
   end
 
@@ -59,6 +60,6 @@ class BugsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def bug_params
-      params.require(:bug).permit(:bug_name, :detail, :status, :project_id)
+      params.require(:bug).permit(:bug_name, :detail, :status, :project_id, :user_id)
     end
 end
