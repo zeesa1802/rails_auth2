@@ -3,18 +3,45 @@ class ProjectsController < ApplicationController
 
   # GET /projects or /projects.json
   def index
-    @projects = Project.all
+    puts("current user")
+    puts(current_user.id)
+    if current_user.role == "project_manager"
+      puts("if")
+      @projects = Project.where(project_manager_id:current_user.id)
+    else
+      puts("else")
+      @projects = current_user.projects
+    end
+    
+    
   end
 
   # GET /projects/1 or /projects/1.json
   def show
+    @project = Project.find(params[:id])
+    # puts("show")
+    # puts(current_user.id)
+    # puts(@project.users.ids)
+
+
+    if !(@project.users.ids.include?(current_user.id) || @project.project_manager_id == current_user.id)
+      redirect_to projects_path
+    end
+
+    # puts(@project.project_manager_id == current_user.id)
+    # # @project_manager_id = @project.project_manager_id
+    # authorize @project
   end
 
   # GET /projects/new
   def new
+    
     @project = Project.new
     @users = User.all
     @added_users = false
+    @created_by = current_user.id
+    authorize @project
+    # puts(@created_by)
   end
 
   # GET /projects/1/edit
@@ -22,6 +49,9 @@ class ProjectsController < ApplicationController
     # puts("start")
     # puts(@project.name)
     @added_users = @project.users
+    @created_by = current_user.id
+    puts("cr_id")
+    puts(@created_by)
 
     # puts(@added_users)
     @users = User.all
@@ -67,6 +97,7 @@ class ProjectsController < ApplicationController
 
   # PATCH/PUT /projects/1 or /projects/1.json
   def update
+    puts(params)
     respond_to do |format|
       puts("start")
       # puts(@project.users)
@@ -157,6 +188,6 @@ class ProjectsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def project_params
-      params.require(:project).permit(:name)
+      params.require(:project).permit(:name, :project_manager_id)
     end
 end

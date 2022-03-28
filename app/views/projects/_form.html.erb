@@ -13,6 +13,12 @@
     <%= form.label :name, style: "display: block" %>
     <%= form.text_field :name %>
   </div>
+
+  <div>
+    <%= form.label :project_manager_id, style: "display: block" %>
+    <%= form.hidden_field :project_manager_id, value:created_by %>
+  </div>
+
   <div>
     <% if added_users %>
       <label for="users[]">Users:</label>
