@@ -47882,3 +47882,756 @@ Processing by BugsController#index as TURBO_STREAM
 Completed 200 OK in 93ms (Views: 73.4ms | ActiveRecord: 0.7ms | Allocations: 5174)
 
 
+Started GET "/projects/77/bugs/new" for 127.0.0.1 at 2022-03-28 16:51:48 +0500
+Processing by BugsController#new as HTML
+  Parameters: {"project_id"=>"77"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 39], ["LIMIT", 1]]
+  [1m[36mProject Load (0.3ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = $1 LIMIT $2[0m  [["id", 77], ["LIMIT", 1]]
+  ↳ app/controllers/bugs_controller.rb:59:in `set_project'
+  Rendering layout layouts/application.html.erb
+  Rendering bugs/new.html.erb within layouts/application
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "user_projects" ON "users"."id" = "user_projects"."user_id" WHERE "user_projects"."project_id" = $1 AND "users"."role" = $2[0m  [["project_id", 77], ["role", 1]]
+  ↳ app/views/bugs/_form.html.erb:30
+  Rendered bugs/_form.html.erb (Duration: 12.6ms | Allocations: 2607)
+  Rendered bugs/new.html.erb within layouts/application (Duration: 26.1ms | Allocations: 2905)
+  Rendered layout layouts/application.html.erb (Duration: 93.3ms | Allocations: 5378)
+Completed 200 OK in 130ms (Views: 94.1ms | ActiveRecord: 6.4ms | Allocations: 10235)
+
+
+Started POST "/projects/77/bugs" for 127.0.0.1 at 2022-03-28 16:52:51 +0500
+Processing by BugsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "bug"=>{"bug_name"=>"KP1", "detail"=>"unas uas sana,mn dm,asns nsabjas has", "status"=>"started", "user_id"=>"46"}, "commit"=>"Create Bug", "project_id"=>"77"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 39], ["LIMIT", 1]]
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = $1 LIMIT $2[0m  [["id", 77], ["LIMIT", 1]]
+  ↳ app/controllers/bugs_controller.rb:59:in `set_project'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/bugs_controller.rb:33:in `create'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 46], ["LIMIT", 1]]
+  ↳ app/controllers/bugs_controller.rb:33:in `create'
+  [1m[36mBug Create (0.8ms)[0m  [1m[32mINSERT INTO "bugs" ("bug_name", "detail", "status", "project_id", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["bug_name", "KP1"], ["detail", "unas uas sana,mn dm,asns nsabjas has"], ["status", 0], ["project_id", 77], ["created_at", "2022-03-28 11:52:51.953111"], ["updated_at", "2022-03-28 11:52:51.953111"], ["user_id", 46]]
+  ↳ app/controllers/bugs_controller.rb:33:in `create'
+  [1m[36mTRANSACTION (6.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/bugs_controller.rb:33:in `create'
+Redirected to http://127.0.0.1:3000/projects/77/bugs/13
+Completed 302 Found in 34ms (ActiveRecord: 7.9ms | Allocations: 4820)
+
+
+Started GET "/projects/77/bugs/13" for 127.0.0.1 at 2022-03-28 16:52:52 +0500
+Processing by BugsController#show as TURBO_STREAM
+  Parameters: {"project_id"=>"77", "id"=>"13"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 39], ["LIMIT", 1]]
+  [1m[36mProject Load (0.3ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = $1 LIMIT $2[0m  [["id", 77], ["LIMIT", 1]]
+  ↳ app/controllers/bugs_controller.rb:59:in `set_project'
+  [1m[36mBug Load (0.3ms)[0m  [1m[34mSELECT "bugs".* FROM "bugs" WHERE "bugs"."project_id" = $1 AND "bugs"."id" = $2 LIMIT $3[0m  [["project_id", 77], ["id", 13], ["LIMIT", 1]]
+  ↳ app/controllers/bugs_controller.rb:63:in `set_bug'
+  Rendering layout layouts/application.html.erb
+  Rendering bugs/show.html.erb within layouts/application
+  Rendered bugs/show.html.erb within layouts/application (Duration: 7.4ms | Allocations: 357)
+  Rendered layout layouts/application.html.erb (Duration: 76.6ms | Allocations: 2841)
+Completed 200 OK in 104ms (Views: 77.8ms | ActiveRecord: 0.9ms | Allocations: 5691)
+
+
+Started GET "/projects/77/bugs" for 127.0.0.1 at 2022-03-28 16:52:59 +0500
+Processing by BugsController#index as HTML
+  Parameters: {"project_id"=>"77"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 39], ["LIMIT", 1]]
+  [1m[36mProject Load (0.3ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = $1 LIMIT $2[0m  [["id", 77], ["LIMIT", 1]]
+  ↳ app/controllers/bugs_controller.rb:59:in `set_project'
+  Rendering layout layouts/application.html.erb
+  Rendering bugs/index.html.erb within layouts/application
+  [1m[36mBug Load (0.4ms)[0m  [1m[34mSELECT "bugs".* FROM "bugs" WHERE "bugs"."project_id" = $1[0m  [["project_id", 77]]
+  ↳ app/views/bugs/index.html.erb:14
+  Rendered bugs/index.html.erb within layouts/application (Duration: 3.2ms | Allocations: 955)
+  Rendered layout layouts/application.html.erb (Duration: 75.5ms | Allocations: 3427)
+Completed 200 OK in 96ms (Views: 76.3ms | ActiveRecord: 1.0ms | Allocations: 5449)
+
+
+Started GET "/projects/77/bugs/new" for 127.0.0.1 at 2022-03-28 16:53:04 +0500
+Processing by BugsController#new as HTML
+  Parameters: {"project_id"=>"77"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 39], ["LIMIT", 1]]
+  [1m[36mProject Load (0.3ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = $1 LIMIT $2[0m  [["id", 77], ["LIMIT", 1]]
+  ↳ app/controllers/bugs_controller.rb:59:in `set_project'
+  Rendering layout layouts/application.html.erb
+  Rendering bugs/new.html.erb within layouts/application
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "user_projects" ON "users"."id" = "user_projects"."user_id" WHERE "user_projects"."project_id" = $1 AND "users"."role" = $2[0m  [["project_id", 77], ["role", 1]]
+  ↳ app/views/bugs/_form.html.erb:30
+  Rendered bugs/_form.html.erb (Duration: 5.3ms | Allocations: 2100)
+  Rendered bugs/new.html.erb within layouts/application (Duration: 6.8ms | Allocations: 2197)
+  Rendered layout layouts/application.html.erb (Duration: 81.3ms | Allocations: 4670)
+Completed 200 OK in 102ms (Views: 81.8ms | ActiveRecord: 1.1ms | Allocations: 7147)
+
+
+Started POST "/projects/77/bugs" for 127.0.0.1 at 2022-03-28 16:53:34 +0500
+Processing by BugsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "bug"=>{"bug_name"=>"KP2", "detail"=>"te e wieuyuid uiyd iuy iudyuisd yuisyduiys duysd uiyd uisyduisy d", "status"=>"started", "user_id"=>"47"}, "commit"=>"Create Bug", "project_id"=>"77"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 39], ["LIMIT", 1]]
+  [1m[36mProject Load (0.3ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = $1 LIMIT $2[0m  [["id", 77], ["LIMIT", 1]]
+  ↳ app/controllers/bugs_controller.rb:59:in `set_project'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/bugs_controller.rb:33:in `create'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 47], ["LIMIT", 1]]
+  ↳ app/controllers/bugs_controller.rb:33:in `create'
+  [1m[36mBug Create (0.4ms)[0m  [1m[32mINSERT INTO "bugs" ("bug_name", "detail", "status", "project_id", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["bug_name", "KP2"], ["detail", "te e wieuyuid uiyd iuy iudyuisd yuisyduiys duysd uiyd uisyduisy d"], ["status", 0], ["project_id", 77], ["created_at", "2022-03-28 11:53:34.412073"], ["updated_at", "2022-03-28 11:53:34.412073"], ["user_id", 47]]
+  ↳ app/controllers/bugs_controller.rb:33:in `create'
+  [1m[36mTRANSACTION (6.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/bugs_controller.rb:33:in `create'
+Redirected to http://127.0.0.1:3000/projects/77/bugs/14
+Completed 302 Found in 39ms (ActiveRecord: 7.8ms | Allocations: 4817)
+
+
+Started GET "/projects/77/bugs/14" for 127.0.0.1 at 2022-03-28 16:53:34 +0500
+Processing by BugsController#show as TURBO_STREAM
+  Parameters: {"project_id"=>"77", "id"=>"14"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 39], ["LIMIT", 1]]
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = $1 LIMIT $2[0m  [["id", 77], ["LIMIT", 1]]
+  ↳ app/controllers/bugs_controller.rb:59:in `set_project'
+  [1m[36mBug Load (0.3ms)[0m  [1m[34mSELECT "bugs".* FROM "bugs" WHERE "bugs"."project_id" = $1 AND "bugs"."id" = $2 LIMIT $3[0m  [["project_id", 77], ["id", 14], ["LIMIT", 1]]
+  ↳ app/controllers/bugs_controller.rb:63:in `set_bug'
+  Rendering layout layouts/application.html.erb
+  Rendering bugs/show.html.erb within layouts/application
+  Rendered bugs/show.html.erb within layouts/application (Duration: 0.4ms | Allocations: 102)
+  Rendered layout layouts/application.html.erb (Duration: 69.8ms | Allocations: 2597)
+Completed 200 OK in 92ms (Views: 70.9ms | ActiveRecord: 0.8ms | Allocations: 5363)
+
+
+Started GET "/projects/77/bugs" for 127.0.0.1 at 2022-03-28 16:53:57 +0500
+Processing by BugsController#index as HTML
+  Parameters: {"project_id"=>"77"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 39], ["LIMIT", 1]]
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = $1 LIMIT $2[0m  [["id", 77], ["LIMIT", 1]]
+  ↳ app/controllers/bugs_controller.rb:59:in `set_project'
+  Rendering layout layouts/application.html.erb
+  Rendering bugs/index.html.erb within layouts/application
+  [1m[36mBug Load (0.3ms)[0m  [1m[34mSELECT "bugs".* FROM "bugs" WHERE "bugs"."project_id" = $1[0m  [["project_id", 77]]
+  ↳ app/views/bugs/index.html.erb:14
+  Rendered bugs/index.html.erb within layouts/application (Duration: 3.3ms | Allocations: 1220)
+  Rendered layout layouts/application.html.erb (Duration: 71.6ms | Allocations: 3704)
+Completed 200 OK in 91ms (Views: 72.5ms | ActiveRecord: 0.7ms | Allocations: 5725)
+
+
+Started GET "/projects/77/bugs/14/edit" for 127.0.0.1 at 2022-03-28 16:54:04 +0500
+Processing by BugsController#edit as HTML
+  Parameters: {"project_id"=>"77", "id"=>"14"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 39], ["LIMIT", 1]]
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = $1 LIMIT $2[0m  [["id", 77], ["LIMIT", 1]]
+  ↳ app/controllers/bugs_controller.rb:59:in `set_project'
+  [1m[36mBug Load (0.3ms)[0m  [1m[34mSELECT "bugs".* FROM "bugs" WHERE "bugs"."project_id" = $1 AND "bugs"."id" = $2 LIMIT $3[0m  [["project_id", 77], ["id", 14], ["LIMIT", 1]]
+  ↳ app/controllers/bugs_controller.rb:63:in `set_bug'
+  Rendering layout layouts/application.html.erb
+  Rendering bugs/edit.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "user_projects" ON "users"."id" = "user_projects"."user_id" WHERE "user_projects"."project_id" = $1 AND "users"."role" = $2[0m  [["project_id", 77], ["role", 1]]
+  ↳ app/views/bugs/_form.html.erb:30
+  Rendered bugs/_form.html.erb (Duration: 4.8ms | Allocations: 2142)
+  Rendered bugs/edit.html.erb within layouts/application (Duration: 13.3ms | Allocations: 2464)
+  Rendered layout layouts/application.html.erb (Duration: 85.0ms | Allocations: 4950)
+Completed 200 OK in 113ms (Views: 85.6ms | ActiveRecord: 1.2ms | Allocations: 8051)
+
+
+Started PATCH "/projects/77/bugs/14" for 127.0.0.1 at 2022-03-28 16:54:08 +0500
+Processing by BugsController#update as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "bug"=>{"bug_name"=>"KP2", "detail"=>"te e wieuyuid uiyd iuy iudyuisd yuisyduiys duysd uiyd uisyduisy d", "status"=>"started", "user_id"=>"46"}, "commit"=>"Update Bug", "project_id"=>"77", "id"=>"14"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 39], ["LIMIT", 1]]
+  [1m[36mProject Load (0.3ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = $1 LIMIT $2[0m  [["id", 77], ["LIMIT", 1]]
+  ↳ app/controllers/bugs_controller.rb:59:in `set_project'
+  [1m[36mBug Load (0.4ms)[0m  [1m[34mSELECT "bugs".* FROM "bugs" WHERE "bugs"."project_id" = $1 AND "bugs"."id" = $2 LIMIT $3[0m  [["project_id", 77], ["id", 14], ["LIMIT", 1]]
+  ↳ app/controllers/bugs_controller.rb:63:in `set_bug'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/bugs_controller.rb:42:in `update'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 46], ["LIMIT", 1]]
+  ↳ app/controllers/bugs_controller.rb:42:in `update'
+  [1m[36mBug Update (0.4ms)[0m  [1m[33mUPDATE "bugs" SET "updated_at" = $1, "user_id" = $2 WHERE "bugs"."id" = $3[0m  [["updated_at", "2022-03-28 11:54:08.902465"], ["user_id", 46], ["id", 14]]
+  ↳ app/controllers/bugs_controller.rb:42:in `update'
+  [1m[36mTRANSACTION (6.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/bugs_controller.rb:42:in `update'
+Redirected to http://127.0.0.1:3000/projects/77/bugs/14
+Completed 302 Found in 37ms (ActiveRecord: 8.0ms | Allocations: 5408)
+
+
+Started GET "/projects/77/bugs/14" for 127.0.0.1 at 2022-03-28 16:54:09 +0500
+Processing by BugsController#show as TURBO_STREAM
+  Parameters: {"project_id"=>"77", "id"=>"14"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 39], ["LIMIT", 1]]
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = $1 LIMIT $2[0m  [["id", 77], ["LIMIT", 1]]
+  ↳ app/controllers/bugs_controller.rb:59:in `set_project'
+  [1m[36mBug Load (0.3ms)[0m  [1m[34mSELECT "bugs".* FROM "bugs" WHERE "bugs"."project_id" = $1 AND "bugs"."id" = $2 LIMIT $3[0m  [["project_id", 77], ["id", 14], ["LIMIT", 1]]
+  ↳ app/controllers/bugs_controller.rb:63:in `set_bug'
+  Rendering layout layouts/application.html.erb
+  Rendering bugs/show.html.erb within layouts/application
+  Rendered bugs/show.html.erb within layouts/application (Duration: 0.4ms | Allocations: 102)
+  Rendered layout layouts/application.html.erb (Duration: 71.2ms | Allocations: 2584)
+Completed 200 OK in 93ms (Views: 72.4ms | ActiveRecord: 0.8ms | Allocations: 5341)
+
+
+Started GET "/projects/77/bugs" for 127.0.0.1 at 2022-03-28 16:54:24 +0500
+Processing by BugsController#index as HTML
+  Parameters: {"project_id"=>"77"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 39], ["LIMIT", 1]]
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = $1 LIMIT $2[0m  [["id", 77], ["LIMIT", 1]]
+  ↳ app/controllers/bugs_controller.rb:59:in `set_project'
+  Rendering layout layouts/application.html.erb
+  Rendering bugs/index.html.erb within layouts/application
+  [1m[36mBug Load (0.3ms)[0m  [1m[34mSELECT "bugs".* FROM "bugs" WHERE "bugs"."project_id" = $1[0m  [["project_id", 77]]
+  ↳ app/views/bugs/index.html.erb:14
+  Rendered bugs/index.html.erb within layouts/application (Duration: 3.3ms | Allocations: 1220)
+  Rendered layout layouts/application.html.erb (Duration: 75.9ms | Allocations: 3692)
+Completed 200 OK in 95ms (Views: 76.5ms | ActiveRecord: 0.8ms | Allocations: 5710)
+
+
+Started GET "/projects/77/bugs/new" for 127.0.0.1 at 2022-03-28 16:54:27 +0500
+Processing by BugsController#new as HTML
+  Parameters: {"project_id"=>"77"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 39], ["LIMIT", 1]]
+  [1m[36mProject Load (0.3ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = $1 LIMIT $2[0m  [["id", 77], ["LIMIT", 1]]
+  ↳ app/controllers/bugs_controller.rb:59:in `set_project'
+  Rendering layout layouts/application.html.erb
+  Rendering bugs/new.html.erb within layouts/application
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "user_projects" ON "users"."id" = "user_projects"."user_id" WHERE "user_projects"."project_id" = $1 AND "users"."role" = $2[0m  [["project_id", 77], ["role", 1]]
+  ↳ app/views/bugs/_form.html.erb:30
+  Rendered bugs/_form.html.erb (Duration: 6.4ms | Allocations: 2100)
+  Rendered bugs/new.html.erb within layouts/application (Duration: 7.4ms | Allocations: 2197)
+  Rendered layout layouts/application.html.erb (Duration: 73.1ms | Allocations: 4670)
+Completed 200 OK in 96ms (Views: 73.7ms | ActiveRecord: 1.1ms | Allocations: 7155)
+
+
+Started POST "/projects/77/bugs" for 127.0.0.1 at 2022-03-28 16:54:39 +0500
+Processing by BugsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "bug"=>{"bug_name"=>"KP3", "detail"=>"lisjlksjdflksdjfkljsd sdkljfl sdjflksdj flsdkj", "status"=>"started", "user_id"=>"45"}, "commit"=>"Create Bug", "project_id"=>"77"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 39], ["LIMIT", 1]]
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = $1 LIMIT $2[0m  [["id", 77], ["LIMIT", 1]]
+  ↳ app/controllers/bugs_controller.rb:59:in `set_project'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/bugs_controller.rb:33:in `create'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 45], ["LIMIT", 1]]
+  ↳ app/controllers/bugs_controller.rb:33:in `create'
+  [1m[36mBug Create (0.4ms)[0m  [1m[32mINSERT INTO "bugs" ("bug_name", "detail", "status", "project_id", "created_at", "updated_at", "user_id") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["bug_name", "KP3"], ["detail", "lisjlksjdflksdjfkljsd sdkljfl sdjflksdj flsdkj"], ["status", 0], ["project_id", 77], ["created_at", "2022-03-28 11:54:39.158444"], ["updated_at", "2022-03-28 11:54:39.158444"], ["user_id", 45]]
+  ↳ app/controllers/bugs_controller.rb:33:in `create'
+  [1m[36mTRANSACTION (6.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/bugs_controller.rb:33:in `create'
+Redirected to http://127.0.0.1:3000/projects/77/bugs/15
+Completed 302 Found in 33ms (ActiveRecord: 7.2ms | Allocations: 4787)
+
+
+Started GET "/projects/77/bugs/15" for 127.0.0.1 at 2022-03-28 16:54:39 +0500
+Processing by BugsController#show as TURBO_STREAM
+  Parameters: {"project_id"=>"77", "id"=>"15"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 39], ["LIMIT", 1]]
+  [1m[36mProject Load (0.3ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = $1 LIMIT $2[0m  [["id", 77], ["LIMIT", 1]]
+  ↳ app/controllers/bugs_controller.rb:59:in `set_project'
+  [1m[36mBug Load (0.4ms)[0m  [1m[34mSELECT "bugs".* FROM "bugs" WHERE "bugs"."project_id" = $1 AND "bugs"."id" = $2 LIMIT $3[0m  [["project_id", 77], ["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/bugs_controller.rb:63:in `set_bug'
+  Rendering layout layouts/application.html.erb
+  Rendering bugs/show.html.erb within layouts/application
+  Rendered bugs/show.html.erb within layouts/application (Duration: 0.6ms | Allocations: 102)
+  Rendered layout layouts/application.html.erb (Duration: 64.1ms | Allocations: 2584)
+Completed 200 OK in 88ms (Views: 65.2ms | ActiveRecord: 1.0ms | Allocations: 5341)
+
+
+Started GET "/projects/77/bugs" for 127.0.0.1 at 2022-03-28 16:55:15 +0500
+Processing by BugsController#index as HTML
+  Parameters: {"project_id"=>"77"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 39], ["LIMIT", 1]]
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = $1 LIMIT $2[0m  [["id", 77], ["LIMIT", 1]]
+  ↳ app/controllers/bugs_controller.rb:59:in `set_project'
+  Rendering layout layouts/application.html.erb
+  Rendering bugs/index.html.erb within layouts/application
+  [1m[36mBug Load (0.4ms)[0m  [1m[34mSELECT "bugs".* FROM "bugs" WHERE "bugs"."project_id" = $1[0m  [["project_id", 77]]
+  ↳ app/views/bugs/index.html.erb:14
+  Rendered bugs/index.html.erb within layouts/application (Duration: 5.4ms | Allocations: 1488)
+  Rendered layout layouts/application.html.erb (Duration: 66.1ms | Allocations: 3960)
+Completed 200 OK in 84ms (Views: 66.7ms | ActiveRecord: 0.8ms | Allocations: 5976)
+
+
+Started GET "/users/sign_out" for 127.0.0.1 at 2022-03-28 16:55:45 +0500
+Processing by Devise::SessionsController#destroy as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 39], ["LIMIT", 1]]
+Redirected to http://127.0.0.1:3000/
+Completed 302 Found in 19ms (ActiveRecord: 0.2ms | Allocations: 1844)
+
+
+Started GET "/" for 127.0.0.1 at 2022-03-28 16:55:46 +0500
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 6.5ms | Allocations: 125)
+  Rendered layout layouts/application.html.erb (Duration: 67.6ms | Allocations: 2917)
+Completed 200 OK in 89ms (Views: 72.0ms | ActiveRecord: 0.0ms | Allocations: 3784)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2022-03-28 16:55:47 +0500
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 8.6ms | Allocations: 561)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 24.6ms | Allocations: 1896)
+  Rendered layout layouts/application.html.erb (Duration: 92.3ms | Allocations: 4422)
+Completed 200 OK in 119ms (Views: 104.6ms | ActiveRecord: 0.0ms | Allocations: 5728)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2022-03-28 16:55:55 +0500
+Processing by Devise::SessionsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"dev@dev.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "dev@dev.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Update (0.4ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = $1, "sign_in_count" = $2, "current_sign_in_at" = $3 WHERE "users"."id" = $4[0m  [["updated_at", "2022-03-28 11:55:56.305014"], ["sign_in_count", 2], ["current_sign_in_at", "2022-03-28 11:55:56.304762"], ["id", 46]]
+  [1m[36mTRANSACTION (6.9ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://127.0.0.1:3000/
+Completed 302 Found in 266ms (ActiveRecord: 7.9ms | Allocations: 5389)
+
+
+Started GET "/" for 127.0.0.1 at 2022-03-28 16:55:56 +0500
+Processing by HomeController#index as TURBO_STREAM
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.1ms | Allocations: 15)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 46], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:19
+  Rendered layout layouts/application.html.erb (Duration: 70.4ms | Allocations: 3468)
+Completed 200 OK in 85ms (Views: 71.2ms | ActiveRecord: 0.3ms | Allocations: 3800)
+
+
+Started GET "/projects" for 127.0.0.1 at 2022-03-28 16:55:58 +0500
+Processing by ProjectsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 46], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering projects/index.html.erb within layouts/application
+  [1m[36mProject Load (0.4ms)[0m  [1m[34mSELECT "projects".* FROM "projects" INNER JOIN "user_projects" ON "projects"."id" = "user_projects"."project_id" WHERE "user_projects"."user_id" = $1[0m  [["user_id", 46]]
+  ↳ app/views/projects/index.html.erb:6
+  Rendered projects/_project.html.erb (Duration: 7.7ms | Allocations: 166)
+  Rendered projects/index.html.erb within layouts/application (Duration: 29.9ms | Allocations: 2408)
+  Rendered layout layouts/application.html.erb (Duration: 95.9ms | Allocations: 4978)
+Completed 200 OK in 126ms (Views: 100.6ms | ActiveRecord: 0.6ms | Allocations: 7571)
+
+
+Started GET "/projects/77" for 127.0.0.1 at 2022-03-28 16:56:08 +0500
+Processing by ProjectsController#show as HTML
+  Parameters: {"id"=>"77"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 46], ["LIMIT", 1]]
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = $1 LIMIT $2[0m  [["id", 77], ["LIMIT", 1]]
+  ↳ app/controllers/projects_controller.rb:187:in `set_project'
+  [1m[36mCACHE Project Load (0.0ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = $1 LIMIT $2[0m  [["id", 77], ["LIMIT", 1]]
+  ↳ app/controllers/projects_controller.rb:21:in `show'
+  [1m[36mUser Pluck (0.3ms)[0m  [1m[34mSELECT "users"."id" FROM "users" INNER JOIN "user_projects" ON "users"."id" = "user_projects"."user_id" WHERE "user_projects"."project_id" = $1[0m  [["project_id", 77]]
+  ↳ app/controllers/projects_controller.rb:27:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering projects/show.html.erb within layouts/application
+  Rendered projects/_project.html.erb (Duration: 0.1ms | Allocations: 21)
+  Rendered projects/show.html.erb within layouts/application (Duration: 8.0ms | Allocations: 498)
+Started GET "/projects/77" for 127.0.0.1 at 2022-03-28 16:56:09 +0500
+  Rendered layout layouts/application.html.erb (Duration: 79.9ms | Allocations: 3246)
+Completed 200 OK in 109ms (Views: 81.2ms | ActiveRecord: 0.8ms | Allocations: 6515)
+
+
+Processing by ProjectsController#show as HTML
+  Parameters: {"id"=>"77"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 46], ["LIMIT", 1]]
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = $1 LIMIT $2[0m  [["id", 77], ["LIMIT", 1]]
+  ↳ app/controllers/projects_controller.rb:187:in `set_project'
+  [1m[36mCACHE Project Load (0.0ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = $1 LIMIT $2[0m  [["id", 77], ["LIMIT", 1]]
+  ↳ app/controllers/projects_controller.rb:21:in `show'
+  [1m[36mUser Pluck (0.4ms)[0m  [1m[34mSELECT "users"."id" FROM "users" INNER JOIN "user_projects" ON "users"."id" = "user_projects"."user_id" WHERE "user_projects"."project_id" = $1[0m  [["project_id", 77]]
+  ↳ app/controllers/projects_controller.rb:27:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering projects/show.html.erb within layouts/application
+  Rendered projects/_project.html.erb (Duration: 0.1ms | Allocations: 21)
+  Rendered projects/show.html.erb within layouts/application (Duration: 0.8ms | Allocations: 203)
+  Rendered layout layouts/application.html.erb (Duration: 64.7ms | Allocations: 2669)
+Completed 200 OK in 88ms (Views: 65.7ms | ActiveRecord: 0.9ms | Allocations: 5829)
+
+
+Started GET "/projects/77/bugs" for 127.0.0.1 at 2022-03-28 16:56:12 +0500
+Processing by BugsController#index as HTML
+  Parameters: {"project_id"=>"77"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 46], ["LIMIT", 1]]
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = $1 LIMIT $2[0m  [["id", 77], ["LIMIT", 1]]
+  ↳ app/controllers/bugs_controller.rb:59:in `set_project'
+  Rendering layout layouts/application.html.erb
+  Rendering bugs/index.html.erb within layouts/application
+  [1m[36mBug Load (0.3ms)[0m  [1m[34mSELECT "bugs".* FROM "bugs" WHERE "bugs"."project_id" = $1[0m  [["project_id", 77]]
+  ↳ app/views/bugs/index.html.erb:14
+  Rendered bugs/index.html.erb within layouts/application (Duration: 3.8ms | Allocations: 1488)
+  Rendered layout layouts/application.html.erb (Duration: 74.2ms | Allocations: 3963)
+Completed 200 OK in 93ms (Views: 75.1ms | ActiveRecord: 0.7ms | Allocations: 5994)
+
+
+Started GET "/projects/77/bugs" for 127.0.0.1 at 2022-03-28 16:58:29 +0500
+Processing by BugsController#index as HTML
+  Parameters: {"project_id"=>"77"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 46], ["LIMIT", 1]]
+  [1m[36mProject Load (0.3ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = $1 LIMIT $2[0m  [["id", 77], ["LIMIT", 1]]
+  ↳ app/controllers/bugs_controller.rb:60:in `set_project'
+  Rendering layout layouts/application.html.erb
+  Rendering bugs/index.html.erb within layouts/application
+  [1m[36mBug Load (0.2ms)[0m  [1m[34mSELECT "bugs".* FROM "bugs" WHERE "bugs"."project_id" = $1[0m  [["project_id", 77]]
+  ↳ app/views/bugs/index.html.erb:14
+  Rendered bugs/index.html.erb within layouts/application (Duration: 11.8ms | Allocations: 4831)
+  Rendered layout layouts/application.html.erb (Duration: 324.8ms | Allocations: 20098)
+Completed 200 OK in 404ms (Views: 323.4ms | ActiveRecord: 11.5ms | Allocations: 39130)
+
+
+Started GET "/projects/77/bugs" for 127.0.0.1 at 2022-03-28 17:01:28 +0500
+Processing by BugsController#index as HTML
+  Parameters: {"project_id"=>"77"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 46], ["LIMIT", 1]]
+  [1m[36mProject Load (0.3ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = $1 LIMIT $2[0m  [["id", 77], ["LIMIT", 1]]
+  ↳ app/controllers/bugs_controller.rb:62:in `set_project'
+  Rendering layout layouts/application.html.erb
+  Rendering bugs/index.html.erb within layouts/application
+  [1m[36mBug Load (0.3ms)[0m  [1m[34mSELECT "bugs".* FROM "bugs" WHERE "bugs"."project_id" = $1[0m  [["project_id", 77]]
+  ↳ app/views/bugs/index.html.erb:14
+  Rendered bugs/index.html.erb within layouts/application (Duration: 11.6ms | Allocations: 4816)
+  Rendered layout layouts/application.html.erb (Duration: 362.7ms | Allocations: 20084)
+Completed 200 OK in 442ms (Views: 361.1ms | ActiveRecord: 9.0ms | Allocations: 38969)
+
+
+Started GET "/projects/77/bugs" for 127.0.0.1 at 2022-03-28 17:03:02 +0500
+Processing by BugsController#index as HTML
+  Parameters: {"project_id"=>"77"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 46], ["LIMIT", 1]]
+  [1m[36mProject Load (0.3ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = $1 LIMIT $2[0m  [["id", 77], ["LIMIT", 1]]
+  ↳ app/controllers/bugs_controller.rb:63:in `set_project'
+  [1m[36mBug Load (0.2ms)[0m  [1m[34mSELECT "bugs".* FROM "bugs" WHERE "bugs"."project_id" = $1 AND "bugs"."user_id" = $2[0m  [["project_id", 77], ["user_id", 46]]
+  ↳ app/controllers/bugs_controller.rb:9:in `puts'
+  Rendering layout layouts/application.html.erb
+  Rendering bugs/index.html.erb within layouts/application
+  [1m[36mBug Load (0.3ms)[0m  [1m[34mSELECT "bugs".* FROM "bugs" WHERE "bugs"."project_id" = $1[0m  [["project_id", 77]]
+  ↳ app/views/bugs/index.html.erb:14
+  Rendered bugs/index.html.erb within layouts/application (Duration: 5.5ms | Allocations: 2255)
+  Rendered layout layouts/application.html.erb (Duration: 353.6ms | Allocations: 17442)
+Completed 200 OK in 441ms (Views: 355.4ms | ActiveRecord: 9.1ms | Allocations: 39414)
+
+
+Started GET "/projects/77/bugs" for 127.0.0.1 at 2022-03-28 17:03:32 +0500
+Processing by BugsController#index as HTML
+  Parameters: {"project_id"=>"77"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 46], ["LIMIT", 1]]
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = $1 LIMIT $2[0m  [["id", 77], ["LIMIT", 1]]
+  ↳ app/controllers/bugs_controller.rb:63:in `set_project'
+  Rendering layout layouts/application.html.erb
+  Rendering bugs/index.html.erb within layouts/application
+  [1m[36mBug Load (0.5ms)[0m  [1m[34mSELECT "bugs".* FROM "bugs" WHERE "bugs"."project_id" = $1 AND "bugs"."user_id" = $2[0m  [["project_id", 77], ["user_id", 46]]
+  ↳ app/views/bugs/index.html.erb:14
+  Rendered bugs/index.html.erb within layouts/application (Duration: 8.2ms | Allocations: 3336)
+  Rendered layout layouts/application.html.erb (Duration: 368.3ms | Allocations: 18604)
+Completed 200 OK in 452ms (Views: 368.6ms | ActiveRecord: 10.3ms | Allocations: 38112)
+
+
+Started GET "/users/sign_out" for 127.0.0.1 at 2022-03-28 17:04:44 +0500
+Processing by Devise::SessionsController#destroy as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 46], ["LIMIT", 1]]
+Redirected to http://127.0.0.1:3000/
+Completed 302 Found in 20ms (ActiveRecord: 0.2ms | Allocations: 2183)
+
+
+Started GET "/" for 127.0.0.1 at 2022-03-28 17:04:44 +0500
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.1ms | Allocations: 17)
+  Rendered layout layouts/application.html.erb (Duration: 69.8ms | Allocations: 2817)
+Completed 200 OK in 90ms (Views: 72.0ms | ActiveRecord: 0.0ms | Allocations: 3654)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2022-03-28 17:04:46 +0500
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 0.3ms | Allocations: 147)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 2.5ms | Allocations: 1102)
+  Rendered layout layouts/application.html.erb (Duration: 59.0ms | Allocations: 3626)
+Completed 200 OK in 73ms (Views: 60.9ms | ActiveRecord: 0.0ms | Allocations: 4796)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2022-03-28 17:04:51 +0500
+Processing by Devise::SessionsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"dev2@dev2.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "dev2@dev2.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Update (0.4ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = $1, "sign_in_count" = $2, "current_sign_in_at" = $3 WHERE "users"."id" = $4[0m  [["updated_at", "2022-03-28 12:04:51.703721"], ["sign_in_count", 2], ["current_sign_in_at", "2022-03-28 12:04:51.703400"], ["id", 45]]
+  [1m[36mTRANSACTION (1.8ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://127.0.0.1:3000/
+Completed 302 Found in 248ms (ActiveRecord: 2.7ms | Allocations: 5275)
+
+
+Started GET "/" for 127.0.0.1 at 2022-03-28 17:04:51 +0500
+Processing by HomeController#index as TURBO_STREAM
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.1ms | Allocations: 15)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 45], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:19
+  Rendered layout layouts/application.html.erb (Duration: 68.9ms | Allocations: 3469)
+Completed 200 OK in 85ms (Views: 69.8ms | ActiveRecord: 0.3ms | Allocations: 3800)
+
+
+Started GET "/projects" for 127.0.0.1 at 2022-03-28 17:04:53 +0500
+Processing by ProjectsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 45], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering projects/index.html.erb within layouts/application
+  [1m[36mProject Load (0.3ms)[0m  [1m[34mSELECT "projects".* FROM "projects" INNER JOIN "user_projects" ON "projects"."id" = "user_projects"."project_id" WHERE "user_projects"."user_id" = $1[0m  [["user_id", 45]]
+  ↳ app/views/projects/index.html.erb:6
+  Rendered projects/_project.html.erb (Duration: 0.1ms | Allocations: 28)
+  Rendered projects/index.html.erb within layouts/application (Duration: 7.2ms | Allocations: 3515)
+  Rendered layout layouts/application.html.erb (Duration: 75.6ms | Allocations: 6093)
+Completed 200 OK in 110ms (Views: 76.1ms | ActiveRecord: 1.6ms | Allocations: 10973)
+
+
+Started GET "/projects/77" for 127.0.0.1 at 2022-03-28 17:04:55 +0500
+Processing by ProjectsController#show as HTML
+  Parameters: {"id"=>"77"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 45], ["LIMIT", 1]]
+  [1m[36mProject Load (0.3ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = $1 LIMIT $2[0m  [["id", 77], ["LIMIT", 1]]
+  ↳ app/controllers/projects_controller.rb:187:in `set_project'
+  [1m[36mCACHE Project Load (0.0ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = $1 LIMIT $2[0m  [["id", 77], ["LIMIT", 1]]
+  ↳ app/controllers/projects_controller.rb:21:in `show'
+  [1m[36mUser Pluck (0.4ms)[0m  [1m[34mSELECT "users"."id" FROM "users" INNER JOIN "user_projects" ON "users"."id" = "user_projects"."user_id" WHERE "user_projects"."project_id" = $1[0m  [["project_id", 77]]
+  ↳ app/controllers/projects_controller.rb:27:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering projects/show.html.erb within layouts/application
+  Rendered projects/_project.html.erb (Duration: 0.1ms | Allocations: 21)
+  Rendered projects/show.html.erb within layouts/application (Duration: 0.9ms | Allocations: 209)
+  Rendered layout layouts/application.html.erb (Duration: 64.1ms | Allocations: 2675)
+Completed 200 OK in 89ms (Views: 65.3ms | ActiveRecord: 0.9ms | Allocations: 6756)
+
+
+Started GET "/projects/77/bugs" for 127.0.0.1 at 2022-03-28 17:04:56 +0500
+Processing by BugsController#index as HTML
+  Parameters: {"project_id"=>"77"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 45], ["LIMIT", 1]]
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = $1 LIMIT $2[0m  [["id", 77], ["LIMIT", 1]]
+  ↳ app/controllers/bugs_controller.rb:63:in `set_project'
+  Rendering layout layouts/application.html.erb
+  Rendering bugs/index.html.erb within layouts/application
+  [1m[36mBug Load (0.3ms)[0m  [1m[34mSELECT "bugs".* FROM "bugs" WHERE "bugs"."project_id" = $1 AND "bugs"."user_id" = $2[0m  [["project_id", 77], ["user_id", 45]]
+  ↳ app/views/bugs/index.html.erb:14
+  Rendered bugs/index.html.erb within layouts/application (Duration: 2.9ms | Allocations: 901)
+  Rendered layout layouts/application.html.erb (Duration: 69.2ms | Allocations: 3369)
+Completed 200 OK in 88ms (Views: 70.3ms | ActiveRecord: 0.7ms | Allocations: 5533)
+
+
+Started GET "/users/sign_out" for 127.0.0.1 at 2022-03-28 17:04:59 +0500
+Processing by Devise::SessionsController#destroy as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 45], ["LIMIT", 1]]
+Redirected to http://127.0.0.1:3000/
+Completed 302 Found in 19ms (ActiveRecord: 0.2ms | Allocations: 1830)
+
+
+Started GET "/" for 127.0.0.1 at 2022-03-28 17:04:59 +0500
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.1ms | Allocations: 15)
+  Rendered layout layouts/application.html.erb (Duration: 71.4ms | Allocations: 2694)
+Completed 200 OK in 86ms (Views: 72.4ms | ActiveRecord: 0.0ms | Allocations: 3022)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2022-03-28 17:05:02 +0500
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 0.2ms | Allocations: 124)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 2.6ms | Allocations: 1002)
+  Rendered layout layouts/application.html.erb (Duration: 60.2ms | Allocations: 3439)
+Completed 200 OK in 74ms (Views: 61.3ms | ActiveRecord: 0.0ms | Allocations: 4127)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2022-03-28 17:05:09 +0500
+Processing by Devise::SessionsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"mryang@yang.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "mryang@yang.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Update (0.5ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = $1, "sign_in_count" = $2, "current_sign_in_at" = $3, "last_sign_in_at" = $4 WHERE "users"."id" = $5[0m  [["updated_at", "2022-03-28 12:05:09.656405"], ["sign_in_count", 18], ["current_sign_in_at", "2022-03-28 12:05:09.656007"], ["last_sign_in_at", "2022-03-28 11:35:48.822398"], ["id", 39]]
+  [1m[36mTRANSACTION (6.0ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://127.0.0.1:3000/
+Completed 302 Found in 251ms (ActiveRecord: 7.1ms | Allocations: 5199)
+
+
+Started GET "/" for 127.0.0.1 at 2022-03-28 17:05:09 +0500
+Processing by HomeController#index as TURBO_STREAM
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.1ms | Allocations: 15)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 39], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:19
+  Rendered layout layouts/application.html.erb (Duration: 73.8ms | Allocations: 3444)
+Completed 200 OK in 89ms (Views: 74.6ms | ActiveRecord: 0.2ms | Allocations: 3774)
+
+
+Started GET "/projects" for 127.0.0.1 at 2022-03-28 17:05:12 +0500
+Processing by ProjectsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 39], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering projects/index.html.erb within layouts/application
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."project_manager_id" = $1[0m  [["project_manager_id", 39]]
+  ↳ app/views/projects/index.html.erb:6
+  Rendered projects/_project.html.erb (Duration: 0.1ms | Allocations: 21)
+  Rendered projects/_project.html.erb (Duration: 0.1ms | Allocations: 20)
+  Rendered projects/_project.html.erb (Duration: 0.0ms | Allocations: 20)
+  Rendered projects/_project.html.erb (Duration: 0.1ms | Allocations: 20)
+  Rendered projects/_project.html.erb (Duration: 0.1ms | Allocations: 20)
+  Rendered projects/index.html.erb within layouts/application (Duration: 5.0ms | Allocations: 1321)
+  Rendered layout layouts/application.html.erb (Duration: 74.6ms | Allocations: 3795)
+Completed 200 OK in 93ms (Views: 75.4ms | ActiveRecord: 0.5ms | Allocations: 5386)
+
+
+Started GET "/projects/77" for 127.0.0.1 at 2022-03-28 17:05:14 +0500
+Processing by ProjectsController#show as HTML
+  Parameters: {"id"=>"77"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 39], ["LIMIT", 1]]
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = $1 LIMIT $2[0m  [["id", 77], ["LIMIT", 1]]
+  ↳ app/controllers/projects_controller.rb:187:in `set_project'
+  [1m[36mCACHE Project Load (0.0ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = $1 LIMIT $2[0m  [["id", 77], ["LIMIT", 1]]
+  ↳ app/controllers/projects_controller.rb:21:in `show'
+  [1m[36mUser Pluck (0.5ms)[0m  [1m[34mSELECT "users"."id" FROM "users" INNER JOIN "user_projects" ON "users"."id" = "user_projects"."user_id" WHERE "user_projects"."project_id" = $1[0m  [["project_id", 77]]
+  ↳ app/controllers/projects_controller.rb:27:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering projects/show.html.erb within layouts/application
+  Rendered projects/_project.html.erb (Duration: 0.2ms | Allocations: 21)
+  Rendered projects/show.html.erb within layouts/application (Duration: 1.2ms | Allocations: 375)
+  Rendered layout layouts/application.html.erb (Duration: 71.2ms | Allocations: 2828)
+Completed 200 OK in 95ms (Views: 72.4ms | ActiveRecord: 1.0ms | Allocations: 5990)
+
+
+Started GET "/projects/77/bugs" for 127.0.0.1 at 2022-03-28 17:05:16 +0500
+Processing by BugsController#index as HTML
+  Parameters: {"project_id"=>"77"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 39], ["LIMIT", 1]]
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = $1 LIMIT $2[0m  [["id", 77], ["LIMIT", 1]]
+  ↳ app/controllers/bugs_controller.rb:63:in `set_project'
+  Rendering layout layouts/application.html.erb
+  Rendering bugs/index.html.erb within layouts/application
+  [1m[36mBug Load (0.3ms)[0m  [1m[34mSELECT "bugs".* FROM "bugs" WHERE "bugs"."project_id" = $1 AND "bugs"."user_id" = $2[0m  [["project_id", 77], ["user_id", 39]]
+  ↳ app/views/bugs/index.html.erb:14
+  Rendered bugs/index.html.erb within layouts/application (Duration: 2.3ms | Allocations: 605)
+  Rendered layout layouts/application.html.erb (Duration: 72.3ms | Allocations: 3081)
+Completed 200 OK in 92ms (Views: 73.1ms | ActiveRecord: 0.7ms | Allocations: 5244)
+
+
+Started GET "/projects/77/bugs" for 127.0.0.1 at 2022-03-28 17:06:43 +0500
+Processing by BugsController#index as HTML
+  Parameters: {"project_id"=>"77"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 39], ["LIMIT", 1]]
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = $1 LIMIT $2[0m  [["id", 77], ["LIMIT", 1]]
+  ↳ app/controllers/bugs_controller.rb:67:in `set_project'
+  Rendering layout layouts/application.html.erb
+  Rendering bugs/index.html.erb within layouts/application
+  [1m[36mBug Load (0.2ms)[0m  [1m[34mSELECT "bugs".* FROM "bugs" WHERE "bugs"."project_id" = $1[0m  [["project_id", 77]]
+  ↳ app/views/bugs/index.html.erb:14
+  Rendered bugs/index.html.erb within layouts/application (Duration: 9.9ms | Allocations: 4816)
+  Rendered layout layouts/application.html.erb (Duration: 364.9ms | Allocations: 20080)
+Completed 200 OK in 443ms (Views: 364.1ms | ActiveRecord: 8.7ms | Allocations: 38996)
+
+
+Started GET "/users/sign_out" for 127.0.0.1 at 2022-03-28 17:06:49 +0500
+Processing by Devise::SessionsController#destroy as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 39], ["LIMIT", 1]]
+Redirected to http://127.0.0.1:3000/
+Completed 302 Found in 20ms (ActiveRecord: 0.3ms | Allocations: 2190)
+
+
+Started GET "/" for 127.0.0.1 at 2022-03-28 17:06:50 +0500
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.1ms | Allocations: 17)
+  Rendered layout layouts/application.html.erb (Duration: 68.0ms | Allocations: 2826)
+Completed 200 OK in 84ms (Views: 70.0ms | ActiveRecord: 0.0ms | Allocations: 3663)
+
+
+Started GET "/users/sign_in" for 127.0.0.1 at 2022-03-28 17:06:51 +0500
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 0.3ms | Allocations: 147)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 2.4ms | Allocations: 1102)
+  Rendered layout layouts/application.html.erb (Duration: 67.6ms | Allocations: 3639)
+Completed 200 OK in 83ms (Views: 69.7ms | ActiveRecord: 0.0ms | Allocations: 4819)
+
+
+Started POST "/users/sign_in" for 127.0.0.1 at 2022-03-28 17:07:03 +0500
+Processing by Devise::SessionsController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "user"=>{"email"=>"dev@dev.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["email", "dev@dev.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Update (0.4ms)[0m  [1m[33mUPDATE "users" SET "updated_at" = $1, "sign_in_count" = $2, "current_sign_in_at" = $3, "last_sign_in_at" = $4 WHERE "users"."id" = $5[0m  [["updated_at", "2022-03-28 12:07:03.454666"], ["sign_in_count", 3], ["current_sign_in_at", "2022-03-28 12:07:03.454408"], ["last_sign_in_at", "2022-03-28 11:55:56.304762"], ["id", 46]]
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://127.0.0.1:3000/
+Completed 302 Found in 250ms (ActiveRecord: 2.1ms | Allocations: 5296)
+
+
+Started GET "/" for 127.0.0.1 at 2022-03-28 17:07:03 +0500
+Processing by HomeController#index as TURBO_STREAM
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.1ms | Allocations: 15)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 46], ["LIMIT", 1]]
+  ↳ app/views/layouts/application.html.erb:19
+  Rendered layout layouts/application.html.erb (Duration: 75.4ms | Allocations: 3472)
+Completed 200 OK in 91ms (Views: 76.4ms | ActiveRecord: 0.2ms | Allocations: 3803)
+
+
+Started GET "/projects" for 127.0.0.1 at 2022-03-28 17:07:05 +0500
+Processing by ProjectsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 46], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering projects/index.html.erb within layouts/application
+  [1m[36mProject Load (0.4ms)[0m  [1m[34mSELECT "projects".* FROM "projects" INNER JOIN "user_projects" ON "projects"."id" = "user_projects"."project_id" WHERE "user_projects"."user_id" = $1[0m  [["user_id", 46]]
+  ↳ app/views/projects/index.html.erb:6
+  Rendered projects/_project.html.erb (Duration: 0.1ms | Allocations: 28)
+  Rendered projects/index.html.erb within layouts/application (Duration: 7.7ms | Allocations: 3516)
+  Rendered layout layouts/application.html.erb (Duration: 75.2ms | Allocations: 6087)
+Completed 200 OK in 112ms (Views: 76.0ms | ActiveRecord: 1.6ms | Allocations: 10964)
+
+
+Started GET "/projects/77" for 127.0.0.1 at 2022-03-28 17:07:07 +0500
+Processing by ProjectsController#show as HTML
+  Parameters: {"id"=>"77"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 46], ["LIMIT", 1]]
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = $1 LIMIT $2[0m  [["id", 77], ["LIMIT", 1]]
+  ↳ app/controllers/projects_controller.rb:187:in `set_project'
+  [1m[36mCACHE Project Load (0.0ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = $1 LIMIT $2[0m  [["id", 77], ["LIMIT", 1]]
+  ↳ app/controllers/projects_controller.rb:21:in `show'
+  [1m[36mUser Pluck (0.4ms)[0m  [1m[34mSELECT "users"."id" FROM "users" INNER JOIN "user_projects" ON "users"."id" = "user_projects"."user_id" WHERE "user_projects"."project_id" = $1[0m  [["project_id", 77]]
+  ↳ app/controllers/projects_controller.rb:27:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering projects/show.html.erb within layouts/application
+  Rendered projects/_project.html.erb (Duration: 0.1ms | Allocations: 21)
+  Rendered projects/show.html.erb within layouts/application (Duration: 0.9ms | Allocations: 209)
+  Rendered layout layouts/application.html.erb (Duration: 70.4ms | Allocations: 2675)
+Completed 200 OK in 94ms (Views: 71.6ms | ActiveRecord: 0.8ms | Allocations: 6752)
+
+
+Started GET "/projects/77/bugs" for 127.0.0.1 at 2022-03-28 17:07:09 +0500
+Processing by BugsController#index as HTML
+  Parameters: {"project_id"=>"77"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 46], ["LIMIT", 1]]
+  [1m[36mProject Load (0.3ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = $1 LIMIT $2[0m  [["id", 77], ["LIMIT", 1]]
+  ↳ app/controllers/bugs_controller.rb:67:in `set_project'
+  Rendering layout layouts/application.html.erb
+  Rendering bugs/index.html.erb within layouts/application
+  [1m[36mBug Load (0.3ms)[0m  [1m[34mSELECT "bugs".* FROM "bugs" WHERE "bugs"."project_id" = $1 AND "bugs"."user_id" = $2[0m  [["project_id", 77], ["user_id", 46]]
+  ↳ app/views/bugs/index.html.erb:14
+  Rendered bugs/index.html.erb within layouts/application (Duration: 3.3ms | Allocations: 1191)
+  Rendered layout layouts/application.html.erb (Duration: 73.0ms | Allocations: 3660)
+Completed 200 OK in 90ms (Views: 73.7ms | ActiveRecord: 0.8ms | Allocations: 5838)
+
+
+Started GET "/projects/77/bugs/13/edit" for 127.0.0.1 at 2022-03-28 17:11:52 +0500
+Processing by BugsController#edit as HTML
+  Parameters: {"project_id"=>"77", "id"=>"13"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT $2[0m  [["id", 46], ["LIMIT", 1]]
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."id" = $1 LIMIT $2[0m  [["id", 77], ["LIMIT", 1]]
+  ↳ app/controllers/bugs_controller.rb:67:in `set_project'
+  [1m[36mBug Load (0.2ms)[0m  [1m[34mSELECT "bugs".* FROM "bugs" WHERE "bugs"."project_id" = $1 AND "bugs"."id" = $2 LIMIT $3[0m  [["project_id", 77], ["id", 13], ["LIMIT", 1]]
+  ↳ app/controllers/bugs_controller.rb:71:in `set_bug'
+  Rendering layout layouts/application.html.erb
+  Rendering bugs/edit.html.erb within layouts/application
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" INNER JOIN "user_projects" ON "users"."id" = "user_projects"."user_id" WHERE "user_projects"."project_id" = $1 AND "users"."role" = $2[0m  [["project_id", 77], ["role", 1]]
+  ↳ app/views/bugs/_form.html.erb:30
+  Rendered bugs/_form.html.erb (Duration: 5.5ms | Allocations: 2216)
+  Rendered bugs/edit.html.erb within layouts/application (Duration: 6.5ms | Allocations: 2377)
+  Rendered layout layouts/application.html.erb (Duration: 73.6ms | Allocations: 4850)
+Completed 200 OK in 96ms (Views: 74.1ms | ActiveRecord: 1.1ms | Allocations: 7930)
+
+

@@ -4,7 +4,15 @@ class BugsController < ApplicationController
 
   # GET projects/1/bugs
   def index
-    @bugs = @project.bugs
+    # puts("I am in bugs :-)")
+    # puts(current_user.email)
+    if current_user.role == "project_manager" || current_user.role == "admin"
+      @bugs = @project.bugs
+    else
+      @bugs = @project.bugs.where(user_id: current_user.id)
+    end
+    
+
   end
 
   # GET projects/1/bugs/1
