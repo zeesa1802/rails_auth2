@@ -13,12 +13,17 @@ class BugsController < ApplicationController
 
   # GET projects/1/bugs/new
   def new
-    @users = User.all
+    # puts("I am bug")
+    @users = @project.users.where(role: "developer")
+    # puts(@project.users.where(role: "developer"))
+    # x.users.where(role: "developer")
+    # @users = User.all
     @bug = @project.bugs.build
   end
 
   # GET projects/1/bugs/1/edit
   def edit
+    @users = @project.users.where(role: "developer")
   end
 
   # POST projects/1/bugs

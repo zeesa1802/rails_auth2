@@ -27,7 +27,7 @@
 
     <div class="field">
     <%= f.label :assigned_to %><br />
-    <%= collection_select(:bug, :user_id, User.all, :id, :email, {}, { :multiple => false}) %>
+    <%= collection_select(:bug, :user_id, users, :id, :email, {}, { :multiple => false}) %>
   </div>
 
 

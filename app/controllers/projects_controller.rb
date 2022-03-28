@@ -85,6 +85,7 @@ class ProjectsController < ApplicationController
         end
         
         
+        
         puts(saved_project.name)
         format.html { redirect_to project_url(@project), notice: "Project was successfully created." }
         format.json { render :show, status: :created, location: @project }
