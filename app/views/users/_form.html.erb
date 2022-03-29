@@ -1,4 +1,4 @@
-<%= form_with(model: user) do |form| %>
+<%= form_with(model: user, url: create_user_path) do |form| %>
   <% if user.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
@@ -15,7 +15,12 @@
   </div>
 
     <div class="field">
-    <%= form.label :password %> <i>(leave blank if you don't want to change it)</i><br />
+    <%= form.label :role %><br/>
+    <%= form.select :role, ["project_manager", "developer", "qa", "admin"] %>
+  </div>
+
+    <div class="field">
+    <%= form.label :password %><br />
     <%= form.password_field :password, autocomplete: "new-password" %>
     <% if @minimum_password_length %>
       <br />

@@ -16,6 +16,7 @@ devise_for :users
 
 root 'home#index'
 get 'dashboard', to: 'home#dashboard'
+post 'create_user', to: 'users#create'
 # resources :users, only: [:index]
 resources :users
 # get 'users', to: 'users#index'

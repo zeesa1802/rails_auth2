@@ -9,7 +9,34 @@ class UsersController < ApplicationController
     # end
   end
 
+  def new
+    
+    @user = User.new
+  end
+
+  def create
+    puts("puts----------")
+    @user = User.new(user_params)
+    @user.save
+    # redirect_to users_path
+
+    respond_to do |format|
+      if @user.save
+       
+        puts("user-------------")
+        puts(@user.email)
+        format.html { redirect_to users_path, notice: "User was successfully created." }
+        format.json { render :show, status: :created, location: @user }
+      else
+        format.html { render :new, status: :unprocessable_entity }
+        format.json { render json: @user.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
   def show
+    
+    puts("it------show")
     @user = User.find(params[:id])
   end
 
@@ -48,7 +75,7 @@ class UsersController < ApplicationController
   private
   def user_params
     puts("sajhkdsjhdjaskhdjksahjk--------")
-    params.require(:user).permit(:email,:password,:password_confirmation)
+    params.require(:user).permit(:email,:password,:password_confirmation, :role)
   end
 
 end
