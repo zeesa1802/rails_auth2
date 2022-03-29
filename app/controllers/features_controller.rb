@@ -13,9 +13,11 @@ class FeaturesController < ApplicationController
 
   # GET projects/1/features/new
   def new
+    
     @status = []
     @status.push("created")
     @feature = @project.features.build
+    authorize @feature
     # @project = @project
     # puts("start")
     # @project_name = @project.name

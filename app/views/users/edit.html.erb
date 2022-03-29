@@ -1,6 +1,2 @@
-<%= @user.email %>
-<%= form_with(model: @user) do |form| %>
-<%= form.collection_check_boxes :role_ids, Role.all, :id, :name %>
-<%= @user.errors[:roles] %>
-<%= form.button :submit %>
-<% end %>
+<h1>Edit User</h1>
+<%= render "form", user:@user %>

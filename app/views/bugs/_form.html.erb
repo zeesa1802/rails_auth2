@@ -20,11 +20,14 @@
     <%= f.label :detail %><br />
     <%= f.text_area :detail %>
   </div>
+
+  <% if current_user.role == 'qa' || current_user.role == 'developer' %>
   <div class="field">
     <%= f.label :status %><br />
     <%= f.select :status, status %>
   </div>
-
+ <% end %>
+ 
     <div class="field">
     <%= f.label :assigned_to %><br />
     <%= collection_select(:bug, :user_id, users, :id, :email, {}, { :multiple => false}) %>

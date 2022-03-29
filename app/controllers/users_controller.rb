@@ -14,6 +14,9 @@ class UsersController < ApplicationController
   end
 
   def edit
+    puts("I am in edit---------")
+    @roles = ["admin", "project_manager", "developer", "qa"]
+    puts(@roles)
     @user = User.find(params[:id])
     authorize @user
   end
@@ -32,6 +35,7 @@ class UsersController < ApplicationController
   end
 
   def update
+    puts("before sjsksksk")
     @user = User.find(params[:id])
     authorize @user
     if @user.update(user_params)
@@ -44,7 +48,7 @@ class UsersController < ApplicationController
   private
   def user_params
     puts("sajhkdsjhdjaskhdjksahjk--------")
-    params.require(:user).permit({role_ids: []})
+    params.require(:user).permit(:email,:password,:password_confirmation)
   end
 
 end
