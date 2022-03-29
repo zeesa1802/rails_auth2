@@ -21,7 +21,7 @@
     <%= f.text_area :detail %>
   </div>
 
-  <% if current_user.role == 'qa' || current_user.role == 'developer' %>
+  <% if current_user.role == 'qa' || current_user.role == 'developer' || current_user.role == 'project_manager' %>
   <div class="field">
     <%= f.label :status %><br />
     <%= f.select :status, status %>
