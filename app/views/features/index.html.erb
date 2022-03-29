@@ -24,4 +24,9 @@
 
 <br />
 
-<%= link_to 'New Feature', new_project_feature_path(params[:project_id]) %>
+
+<% if (current_user.role == 'project_manager' || current_user.role == 'admin' || current_user.role == 'qa') %>
+  <%= link_to 'New Feature', new_project_feature_path(params[:project_id]) %>
+<% end %>
+
+

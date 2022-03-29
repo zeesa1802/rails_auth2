@@ -1,4 +1,4 @@
 class Feature < ApplicationRecord
   belongs_to :project
-  enum status: [:started, :in_progress, :in_review, :completed]
+  enum status: [:created, :in_progress, :in_review, :complete]
 end

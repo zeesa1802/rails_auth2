@@ -1,6 +1,6 @@
 <h1>Editing feature</h1>
 
-<%= render 'form' %>
+<%= render 'form', status: @status %>
 
 <%= link_to 'Show', [@feature.project, @feature] %> |
 <%= link_to 'Back', project_features_path(@feature.project) %>

@@ -13,6 +13,8 @@ class FeaturesController < ApplicationController
 
   # GET projects/1/features/new
   def new
+    @status = []
+    @status.push("created")
     @feature = @project.features.build
     # @project = @project
     # puts("start")
@@ -22,6 +24,25 @@ class FeaturesController < ApplicationController
 
   # GET projects/1/features/1/edit
   def edit
+    @status = []
+    @status.push(@feature.status)
+
+    
+    if current_user.role == "qa"
+      if(@feature.status == "complete")
+        @status.push("created")
+      elsif(@feature.status == "in_progress")
+        @status.push("complete")
+      end
+
+    elsif current_user.role == "developer"
+      if(@feature.status == "in_progress" || @feature.status == "complete")
+      else
+        @status.push("in_progress")
+      end
+      
+    end
+    
   end
 
   # POST projects/1/features

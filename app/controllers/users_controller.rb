@@ -43,6 +43,7 @@ class UsersController < ApplicationController
 
   private
   def user_params
+    puts("sajhkdsjhdjaskhdjksahjk--------")
     params.require(:user).permit({role_ids: []})
   end
 
