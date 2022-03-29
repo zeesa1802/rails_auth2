@@ -19,7 +19,8 @@
     <td><%= link_to 'Edit', edit_project_feature_path(feature.project, feature) %></td>
     
     <% if (current_user.role == 'project_manager' || current_user.role == 'admin') %>
-      <td><%= link_to 'Destroy', [feature.project, feature], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          <td><%= button_to "Destroy this Feature", [feature.project, feature], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      
     <% end %>
   </tr>
 <% end %>
