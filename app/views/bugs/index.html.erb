@@ -27,7 +27,7 @@
 
 <br />
 
-<% if (current_user.role == 'qa' || current_user.role == 'admin') %>
+<% if (current_user.role == 'qa' || current_user.role == 'admin' || current_user.role == 'project_manager') %>
   <%= link_to 'New Bug', new_project_bug_path(params[:project_id]) %>
 <% end %>
 
