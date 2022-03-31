@@ -3,6 +3,11 @@ class ProjectsController < ApplicationController
 
   # GET /projects or /projects.json
   def index
+    #also send feature to show in projects page
+    # @features = @project.features
+    # puts("-------------fraturess")
+    # puts(@project.name)
+
     puts("current user")
     puts(current_user.id)
     if current_user.role == "project_manager"
@@ -19,6 +24,8 @@ class ProjectsController < ApplicationController
   # GET /projects/1 or /projects/1.json
   def show
     @project = Project.find(params[:id])
+    @features = @project.features
+    @users = @project.users
     # puts("show")
     # puts(current_user.id)
     # puts(@project.users.ids)
@@ -37,7 +44,9 @@ class ProjectsController < ApplicationController
   def new
     
     @project = Project.new
-    @users = User.all
+    @users = User.where.not(id:current_user.id)
+
+
     @added_users = false
     @created_by = current_user.id
     authorize @project
@@ -76,6 +85,7 @@ class ProjectsController < ApplicationController
     respond_to do |format|
       if @project.save
         saved_project = Project.find_by id: @project.id
+        saved_project.users.push(current_user)
         users = params[:users]
 
         users.each do |user|
@@ -86,7 +96,7 @@ class ProjectsController < ApplicationController
         
         
         
-        puts(saved_project.name)
+        
         format.html { redirect_to project_url(@project), notice: "Project was successfully created." }
         format.json { render :show, status: :created, location: @project }
       else

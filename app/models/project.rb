@@ -5,5 +5,14 @@ class Project < ApplicationRecord
   
   has_many :bugs, dependent: :destroy
   has_many :features, dependent: :destroy
+
+  # after_commit :add_project_manager
+
+  
+def add_project_manager
+  # users.push(current_user)
+	# puts(Project.last.users)
+end
+
   # validates :name, presence: true
 end

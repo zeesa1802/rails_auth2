@@ -7,14 +7,15 @@ Rails.application.routes.draw do
     resources :bugs
   end
 
-# devise_scope :user do  
-#    get '/users/sign_out' => 'devise/sessions#destroy'     
-# end
+devise_scope :user do  
+  root to: "devise/sessions#new"     
+end
 
 devise_for :users
 
 
-root 'home#index'
+# root 'home#index'
+# root to: "devise/sessions#new"
 get 'dashboard', to: 'home#dashboard'
 post 'create_user', to: 'users#create'
 # resources :users, only: [:index]

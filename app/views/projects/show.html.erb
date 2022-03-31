@@ -1,6 +1,85 @@
 <p style="color: green"><%= notice %></p>
+       <header class="py-5">
+            <div class="container px-lg-5">
+                <div class="p-4 p-lg-5 bg-light rounded-3 text-center">
+                <h1 class="display-5 fw-bold"><%= @project.name.capitalize %></h1>
+                    <div class="m-4 m-lg-5">
+                    
+                       
+                          <% if current_user.role == 'admin' || current_user.role == 'project_manager' %>
+                          <div class="d-grid">
+                           <a class="btn btn-primary btn-md" href="<%= edit_project_path(@project) %>">Edit This Project</a>
+                         </div>
+                      
+                          <div class="d-grid">
+                            <%= button_to "Destroy this project", @project, method: :delete,:class => "btn btn-danger btn-block",:style => "width: 100%; margin-top: 0.5cm" %>
+                           </div>
+                          <% end %>
+                        
+                         
+                    </div>
+                </div>
+            </div>
+        </header>
+  <div class="container px-4 px-lg-5">
 
-<h2><%= render @project %></h2>
+<h1 class="text-center mt-4">Team Members</h1>
+  <div class="card-body">
+  <table class="table table-hover table-striped table-bordered" id="datatablesSimple">
+      <thead>
+        <tr>
+          <th>USER ID</th>
+          <th>Email</th>
+          <th>Role</th>
+        </tr>
+      </thead>
+      <tbody>
+          
+        <% @users.each do |user| %>
+        <tr>
+          <td><%= user.id %></td>
+          <td><%= user.email %></td>
+          <td><%= user.role %></td>
+        </tr>
+   <% end %>
+      </tbody>         
+  </table>
+</div>
+
+
+<h1 class="text-center mt-4">All Features</h1>
+  <div class="card-body">
+  <table class="table table-hover table-striped table-bordered" id="datatablesSimple">
+      <thead>
+        <tr>
+          <th>Feature ID</th>
+          <th>Feature Name</th>
+          <th>Status</th>
+          
+        </tr>
+      </thead>
+      <tbody>
+          
+        <% @features.each do |feature| %>
+        <tr>
+          <td><%= feature.id %></td>
+          <td><%= feature.feature_name %></td>
+          <td><%= feature.status %></td>
+          
+        </tr>
+   <% end %>
+      </tbody>         
+  </table>
+</div>
+
+
+
+
+
+
+
+
+
 
 <div>
 
@@ -10,10 +89,31 @@
 
   <%= link_to "Back to projects", projects_path %>
   
-  <% if current_user.role == 'admin' || current_user.role == 'project_manager' %>
-    <%= link_to "Edit this project", edit_project_path(@project) %> 
-    <%= button_to "Destroy this project", @project, method: :delete %>
-  <% end %>
+
+  
   
   
 </div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
+
+
+<script>
+
+// window.addEventListener('DOMContentLoaded', event => {
+    // Simple-DataTables
+    // https://github.com/fiduswriter/Simple-DataTables/wiki
+    window.onload = function() {
+   
+    const datatablesSimple = document.getElementById('datatablesSimple');
+    
+    if (datatablesSimple) {
+      
+        new simpleDatatables.DataTabl(datatablesSimple,{sortable:"false"});
+    }
+
+    };
+// });
+
+</script>
