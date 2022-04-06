@@ -1,31 +1,33 @@
 <p style="color: green"><%= notice %></p>
-       <header class="py-5">
-            <div class="container px-lg-5">
-                <div class="p-4 p-lg-5 bg-light rounded-3 text-center">
-                <h1 class="display-5 fw-bold"><%= @project.name.capitalize %></h1>
-                    <div class="m-4 m-lg-5">
-                    
-                       
-                          <% if current_user.role == 'admin' || current_user.role == 'project_manager' %>
-                          <div class="d-grid">
-                           <a class="btn btn-primary btn-md" href="<%= edit_project_path(@project) %>">Edit This Project</a>
-                         </div>
-                      
-                          <div class="d-grid">
-                            <%= button_to "Destroy this project", @project, method: :delete,:class => "btn btn-danger btn-block",:style => "width: 100%; margin-top: 0.5cm" %>
-                           </div>
-                          <% end %>
-                        
-                         
-                    </div>
-                </div>
-            </div>
-        </header>
-  <div class="container px-4 px-lg-5">
-
-<h1 class="text-center mt-4">Team Members</h1>
+<header class="py-5">
+  <div class="container px-lg-5">
+    <div class="p-4 p-lg-5 bg-light rounded-3 text-center">
+      <h1 class="display-5 fw-bold"><%= @project.name.capitalize %></h1>
+      <div class="m-4 m-lg-5">
+        <% if current_user.role != "developer" %>
+          <div class="d-grid">
+            <a class="btn btn-primary btn-md" href="<%= new_project_bug_path(@project.id) %>">Add New Bug</a>
+          </div>
+        <% end %>
+        <% if current_user.role == 'admin' || current_user.role == 'project_manager' %>
+          <div class="d-grid">
+            <a class="btn btn-primary btn-md" href="<%= new_project_feature_path(@project.id) %>", style = "width: 100%; margin-top: 0.5cm">Add New Feature</a>
+          </div>
+          <div class="d-grid">
+            <a class="btn btn-success btn-md" href="<%= edit_project_path(@project) %>", style = "width: 100%; margin-top: 0.5cm">Edit This Project</a>
+          </div>
+          <div class="d-grid">
+            <%= button_to "Destroy this project", @project, method: :delete,:class => "btn btn-danger btn-block",:style => "width: 100%; margin-top: 0.5cm" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</header>
+<div class="container px-4 px-lg-5">
+  <h1 class="text-center mt-4">Team Members</h1>
   <div class="card-body">
-  <table class="table table-hover table-striped table-bordered" id="datatablesSimple">
+    <table class="table table-hover table-striped table-bordered" id="datatablesSimple">
       <thead>
         <tr>
           <th>USER ID</th>
@@ -34,86 +36,105 @@
         </tr>
       </thead>
       <tbody>
-          
         <% @users.each do |user| %>
-        <tr>
-          <td><%= user.id %></td>
-          <td><%= user.email %></td>
-          <td><%= user.role %></td>
-        </tr>
-   <% end %>
-      </tbody>         
-  </table>
-</div>
-
-
-<h1 class="text-center mt-4">All Features</h1>
+          <tr>
+            <td><%= user.id %></td>
+            <td><%= user.email %></td>
+            <td><%= user.role %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  <h1 class="text-center mt-4">All Features</h1>
   <div class="card-body">
-  <table class="table table-hover table-striped table-bordered" id="datatablesSimple">
+    <table class="table table-hover table-striped table-bordered" id="datatablesSimple">
       <thead>
         <tr>
           <th>Feature ID</th>
           <th>Feature Name</th>
           <th>Status</th>
-          
+          <th>Edit</th>
         </tr>
       </thead>
       <tbody>
-          
         <% @features.each do |feature| %>
+          <tr>
+            <td><%= feature.id %></td>
+            <td><%= feature.feature_name %></td>
+            <td><%= feature.status %></td>
+            <td>
+              <ul class="list-inline m-0">
+                <li class="list-inline-item">
+                  <%= link_to "Edit", edit_project_feature_path(feature.project, feature),:class=>"btn btn-success btn-sm rounded-0" %>
+                </li>
+                <% if @user.role == "admin" || @user.role == "project_manager" %>
+                  <li class="list-inline-item">
+                    <%= button_to "Delete", [feature.project, feature], method: :delete, data: { confirm: 'Are you sure?' }, :class=>"btn btn-danger btn-sm rounded-0" %>
+                  </li>
+                <% end %>
+              </ul>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  <h1 class="text-center mt-4">All Bugs</h1>
+  <div class="card-body">
+    <table class="table table-hover table-striped table-bordered" id="datatablesSimple">
+      <thead>
         <tr>
-          <td><%= feature.id %></td>
-          <td><%= feature.feature_name %></td>
-          <td><%= feature.status %></td>
-          
+          <th>Bug ID</th>
+          <th>Bug Name</th>
+          <th>Assigned To</th>
+          <th>Status</th>       
+          <th>Edit/Delete</th>
         </tr>
-   <% end %>
-      </tbody>         
-  </table>
-</div>
+      </thead>
+      <tbody>
+        <% @bugs.each do |bug| %>
+          <tr>
+            <td><%= bug.id %></td>
+            <td><%= bug.bug_name %></td>
+            <td><%= bug.user.email %></td>
+            <td><%= bug.status %></td>
+            <td>
+              <ul class="list-inline m-0">
+                <li class="list-inline-item">
+                  <%= link_to "Edit", edit_project_bug_path(bug.project, bug),:class=>"btn btn-success btn-sm rounded-0" %>
+                </li>
+                <% if @user.role == "admin" || @user.role == "project_manager" %>
+                  <li class="list-inline-item">
+                    <%= button_to "Delete", [bug.project, bug], method: :delete, data: { confirm: 'Are you sure?' }, :class=>"btn btn-danger btn-sm rounded-0" %>
+                  </li>
+                <% end %>
+              </ul>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  <div>
+    <%= link_to "Show Features", project_features_path(@project) %>
+    <%= link_to "Show Bugs", project_bugs_path(@project) %>
+    <%= link_to "Back to projects", projects_path %>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
+  <script>
+    // window.addEventListener('DOMContentLoaded', event => {
+        // Simple-DataTables
+        // https://github.com/fiduswriter/Simple-DataTables/wiki
+        window.onload = function() {
 
+        const datatablesSimple = document.getElementById('datatablesSimple');
 
+        if (datatablesSimple) {
 
+            new simpleDatatables.DataTabl(datatablesSimple,{sortable:"false"});
+        }
 
-
-
-
-
-
-
-<div>
-
-
-  <%= link_to "Show Features", project_features_path(@project) %>
-  <%= link_to "Show Bugs", project_bugs_path(@project) %>
-
-  <%= link_to "Back to projects", projects_path %>
-  
-
-  
-  
-  
-</div>
-
-
-<script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
-
-
-<script>
-
-// window.addEventListener('DOMContentLoaded', event => {
-    // Simple-DataTables
-    // https://github.com/fiduswriter/Simple-DataTables/wiki
-    window.onload = function() {
-   
-    const datatablesSimple = document.getElementById('datatablesSimple');
-    
-    if (datatablesSimple) {
-      
-        new simpleDatatables.DataTabl(datatablesSimple,{sortable:"false"});
-    }
-
-    };
-// });
-
-</script>
+        };
+    // });
+  </script>

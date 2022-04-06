@@ -52,7 +52,7 @@ class FeaturesController < ApplicationController
     @feature = @project.features.build(feature_params)
 
     if @feature.save
-      redirect_to([@feature.project, @feature], notice: 'Feature was successfully created.')
+      redirect_to(project_path(@project), notice: 'Feature was successfully created.')
     else
       render action: 'new'
     end
@@ -61,7 +61,7 @@ class FeaturesController < ApplicationController
   # PUT projects/1/features/1
   def update
     if @feature.update(feature_params)
-      redirect_to([@feature.project, @feature], notice: 'Feature was successfully updated.')
+      redirect_to(project_path(@project), notice: 'Feature was successfully updated.')
     else
       render action: 'edit'
     end
@@ -71,7 +71,7 @@ class FeaturesController < ApplicationController
   def destroy
     @feature.destroy
 
-    redirect_to project_features_url(@project)
+    redirect_to project_path(@project, notice: 'Feature was deleted successfully.')
   end
 
   private

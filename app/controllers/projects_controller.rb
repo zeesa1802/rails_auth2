@@ -3,28 +3,33 @@ class ProjectsController < ApplicationController
 
   # GET /projects or /projects.json
   def index
-    #also send feature to show in projects page
-    # @features = @project.features
-    # puts("-------------fraturess")
-    # puts(@project.name)
-
-    puts("current user")
-    puts(current_user.id)
     if current_user.role == "project_manager"
-      puts("if")
-      @projects = Project.where(project_manager_id:current_user.id)
+      @projects = policy_scope(Project.all)
+      # @projects = Project.where(project_manager_id:current_user.id)
     else
-      puts("else")
       @projects = current_user.projects
     end
     
-    
+   
   end
 
   # GET /projects/1 or /projects/1.json
   def show
     @project = Project.find(params[:id])
     @features = @project.features
+    @user = current_user
+    
+    authorize @project
+    
+    if(@project.project_manager_id == current_user.id || current_user.role == 'qa')
+      @bugs = @project.bugs
+    else
+      @bugs = policy_scope(Bug.all)
+    end
+    
+
+
+
     @users = @project.users
     # puts("show")
     # puts(current_user.id)
@@ -61,7 +66,7 @@ class ProjectsController < ApplicationController
     @created_by = current_user.id
     puts("cr_id")
     puts(@created_by)
-
+    authorize @project 
     # puts(@added_users)
     @users = User.all
   end
@@ -97,7 +102,7 @@ class ProjectsController < ApplicationController
         
         
         
-        format.html { redirect_to project_url(@project), notice: "Project was successfully created." }
+        format.html { redirect_to projects_path, notice: "Project was successfully created." }
         format.json { render :show, status: :created, location: @project }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -109,6 +114,7 @@ class ProjectsController < ApplicationController
   # PATCH/PUT /projects/1 or /projects/1.json
   def update
     puts(params)
+    authorize @project
     respond_to do |format|
       puts("start")
       # puts(@project.users)
@@ -199,6 +205,6 @@ class ProjectsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def project_params
-      params.require(:project).permit(:name, :project_manager_id)
+      params.require(:project).permit(:name, :project_manager_id, :description)
     end
 end

@@ -6,11 +6,16 @@ class BugsController < ApplicationController
   def index
     # puts("I am in bugs :-)")
     # puts(current_user.email)
-    if current_user.role == "project_manager" || current_user.role == "admin" || current_user.role == "qa"
+    if(@project.project_manager_id == current_user.id || current_user.role == 'qa')
       @bugs = @project.bugs
     else
-      @bugs = @project.bugs.where(user_id: current_user.id)
+      @bugs = policy_scope(Bug.all)
     end
+    # if current_user.role == "project_manager" || current_user.role == "admin" || current_user.role == "qa"
+    #   @bugs = @project.bugs
+    # else
+    #   @bugs = @project.bugs.where(user_id: current_user.id)
+    # end
     
 
   end
@@ -74,7 +79,7 @@ class BugsController < ApplicationController
     @bug = @project.bugs.build(bug_params)
 
     if @bug.save
-      redirect_to([@bug.project, @bug], notice: 'Bug was successfully created.')
+      redirect_to(project_path(@project), notice: 'Bug was successfully created.')
     else
       render action: 'new'
     end
@@ -83,7 +88,7 @@ class BugsController < ApplicationController
   # PUT projects/1/bugs/1
   def update
     if @bug.update(bug_params)
-      redirect_to([@bug.project, @bug], notice: 'Bug was successfully updated.')
+      redirect_to(project_path(@project), notice: 'Bug was successfully updated.')
     else
       render action: 'edit'
     end
@@ -93,7 +98,7 @@ class BugsController < ApplicationController
   def destroy
     @bug.destroy
 
-    redirect_to project_bugs_url(@project)
+    redirect_to project_path(@project, notice: 'Bug was deleted successfully.')
   end
 
   private

@@ -8,7 +8,7 @@ class UserPolicy < ApplicationPolicy
 
   def index?
     # @user.has_any_role? :admin, :newuser
-    @user.role == "admin"
+    @user.role == "admin" || @user.role == "project_manager"
   end
 
   def edit?

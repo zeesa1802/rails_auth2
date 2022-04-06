@@ -1,4 +1,59 @@
-<h1>Users Information</h1>
+<p style="color: green"><%= notice %></p>
+<div class="container px-4 px-lg-5">
+  <h1 class="text-center mt-4">All Users</h1>
+  <div class="card-body">
+    <table class="table table-hover table-striped table-bordered" id="datatablesSimple">
+      <thead>
+        <tr>
+
+  <tr>
+    <th>UserID</th>
+    <th>Email</th>
+    <th>Role</th>
+    <% if current_user.role == "admin"%>
+    <th>Edit</th>
+   <% end %>
+  </tr>
+
+<% @users.each do |user| %>
+  <tr>
+    <td><%= user.id %></td>
+    <td><%= user.email %></td>
+    <td><%= user.role %></td>
+  <% if current_user.role == "admin"%>
+    <td>
+
+
+
+              <ul class="list-inline m-0">
+
+                
+                        <li class="list-inline-item">
+                  <%= link_to "Edit", edit_user_path(user),:class=>"btn btn-success btn-sm rounded-2" %>
+                </li>
+                  <li class="list-inline-item">
+
+<%= button_to "Delete", user, method: :delete,  :class=>"btn btn-danger btn-sm rounded-2" %>
+
+                  
+                  </li>
+           
+              </ul>
+
+
+
+    </td>
+<% end %>
+    
+
+  </tr>
+<% end %>
+</table>
+
+      </tbody>
+    </table>
+  </div>
+
 
 <% @users.each do |user| %>
   email: <%= user.email %>
